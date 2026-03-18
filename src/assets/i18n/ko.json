@@ -122,17 +122,6 @@
       "TITLE": "🙈 부디 용서해 주세요만...",
       "TXT": "당신이 그것을 좋아한다면 <strong>좋은 평가를 주면 프로젝트에 엄청난 도움이 될 것입니다!</strong>"
     },
-    "VOICE_REMINDER": {
-      "FORM": {
-        "HELP": "작업 시간을 추적할 때 구성된 문구를 X마다 반복합니다.",
-        "L_INTERVAL": "구문 반복 간격",
-        "L_TEXT": "텍스트",
-        "L_TEXT_DESCRIPTION": "예: \"{currentTaskTitle}달러 작업!\"",
-        "L_VOICE": "음색 선택",
-        "L_VOICE_DESCRIPTION": "음성 선택",
-        "TITLE": "음성 알림"
-      }
-    },
     "DROPBOX": {
       "S": {
         "OFFLINE": "보관 용 계정 : 오프라인 상태이므로 동기화 할 수 없습니다",
@@ -1102,6 +1091,17 @@
         "UNTRACKED_TIME": "추적되지 않은 시간 :"
       }
     },
+    "VOICE_REMINDER": {
+      "FORM": {
+        "HELP": "작업 시간을 추적할 때 구성된 문구를 X마다 반복합니다.",
+        "L_INTERVAL": "구문 반복 간격",
+        "L_TEXT": "텍스트",
+        "L_TEXT_DESCRIPTION": "예: \"{currentTaskTitle}달러 작업!\"",
+        "L_VOICE": "음색 선택",
+        "L_VOICE_DESCRIPTION": "음성 선택",
+        "TITLE": "음성 알림"
+      }
+    },
     "WORKLOG": {
       "CMP": {
         "DAYS_WORKED": "일한 날짜 :",
@@ -1345,16 +1345,6 @@
       "START_OF_NEXT_DAY_HINT": "다음 날을 계산하려는 시점(시간 단위)부터 시작됩니다. 기본값은 0인 자정입니다.",
       "TITLE": "기타 설정"
     },
-    "TASKS": {
-      "DEFAULT_PROJECT": "지정되지 않은 경우 작업에 사용할 기본 프로젝트",
-      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "자동으로 오늘 작업 중인 태스크를 추가합니다.",
-      "IS_AUTO_MARK_PARENT_AS_DONE": "모든 하위 작업이 완료되면 부모 작업을 완료로 표시합니다.",
-      "IS_CONFIRM_BEFORE_DELETE": "작업 삭제 전에 확인합니다.",
-      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "작업 노트에서 Markdown 형식을 사용하도록 설정합니다.",
-      "IS_TRAY_SHOW_CURRENT": "트레이/상태 메뉴에 현재 작업을 표시합니다(데스크톱 Mac/Windows 전용).",
-      "NOTES_TEMPLATE": "작업 설명 템플릿",
-      "TITLE": "작업"
-    },
     "POMODORO": {
       "BREAK_DURATION": "짧은 휴식 시간",
       "CYCLES_BEFORE_LONGER_BREAK": "X 작업 세션 후에 더 긴 휴식을 시작하십시오.",
@@ -1407,6 +1397,16 @@
       "NOTIFICATION_TITLE": "휴식을 취하다!",
       "SNOOZE_TIME": "휴식을 취하라는 메시지가 표시되면 일시 중지 시간",
       "TITLE": "휴식 알림"
+    },
+    "TASKS": {
+      "DEFAULT_PROJECT": "지정되지 않은 경우 작업에 사용할 기본 프로젝트",
+      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "자동으로 오늘 작업 중인 태스크를 추가합니다.",
+      "IS_AUTO_MARK_PARENT_AS_DONE": "모든 하위 작업이 완료되면 부모 작업을 완료로 표시합니다.",
+      "IS_CONFIRM_BEFORE_DELETE": "작업 삭제 전에 확인합니다.",
+      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "작업 노트에서 Markdown 형식을 사용하도록 설정합니다.",
+      "IS_TRAY_SHOW_CURRENT": "트레이/상태 메뉴에 현재 작업을 표시합니다(데스크톱 Mac/Windows 전용).",
+      "NOTES_TEMPLATE": "작업 설명 템플릿",
+      "TITLE": "작업"
     },
     "TIME_TRACKING": {
       "HELP": "시간 추적 알림은 시간 추적 시작을 잊어버렸을 때 표시되는 배너입니다.",

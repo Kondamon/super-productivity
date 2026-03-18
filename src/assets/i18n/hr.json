@@ -122,17 +122,6 @@
       "TITLE": "🙈 Tanpri padonnen nou, men ...",
       "TXT": "Ou ta ede pwojè a ekstrèmman pa <strong>bay li yon Bon Rating, si ou renmen li!</strong>"
     },
-    "VOICE_REMINDER": {
-      "FORM": {
-        "HELP": "Ponavlja konfiguriranu frazu svakih X tijekom praćenja vremena zadatka.",
-        "L_INTERVAL": "Interval za ponavljanje fraze",
-        "L_TEXT": "Tekst",
-        "L_TEXT_DESCRIPTION": "Npr.: \"Rad na zadatku ${currentTaskTitle}!\"",
-        "L_VOICE": "Chwazi yon vwa",
-        "L_VOICE_DESCRIPTION": "Chwazi yon vwa",
-        "TITLE": "Glasovni podsjetnik"
-      }
-    },
     "DROPBOX": {
       "S": {
         "OFFLINE": "Dropbox: Sinkronizacija nije moguća jer računalo nije povezano s internetom",
@@ -1083,6 +1072,17 @@
         "UNTRACKED_TIME": "Nepraćeno vrijeme:"
       }
     },
+    "VOICE_REMINDER": {
+      "FORM": {
+        "HELP": "Ponavlja konfiguriranu frazu svakih X tijekom praćenja vremena zadatka.",
+        "L_INTERVAL": "Interval za ponavljanje fraze",
+        "L_TEXT": "Tekst",
+        "L_TEXT_DESCRIPTION": "Npr.: \"Rad na zadatku ${currentTaskTitle}!\"",
+        "L_VOICE": "Chwazi yon vwa",
+        "L_VOICE_DESCRIPTION": "Chwazi yon vwa",
+        "TITLE": "Glasovni podsjetnik"
+      }
+    },
     "WORKLOG": {
       "CMP": {
         "DAYS_WORKED": "Broj radnih dana:",
@@ -1324,16 +1324,6 @@
       "START_OF_NEXT_DAY_HINT": "U koje vrijeme (sat) želiš brojiti početak sljedećeg dana. Standardno je postavljena ponoć, što je 0.",
       "TITLE": "Razne postavke"
     },
-    "TASKS": {
-      "DEFAULT_PROJECT": "Standardni projekt za nove zadatke",
-      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "Automatski dodaj oznaku danas zadacima koje si obrađivao/la",
-      "IS_AUTO_MARK_PARENT_AS_DONE": "Automatski označi nadređeni zadatak kao obavljen kada su sve podzadatke obavljene",
-      "IS_CONFIRM_BEFORE_DELETE": "Potvrdi prije brisanja zadataka",
-      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "Omogući Markdown formatiranje u bilješkama zadataka",
-      "IS_TRAY_SHOW_CURRENT": "Prikaži trenutni zadatak u donjoj traci sustava / izborniku stanja (samo desktop mac/windows računala)",
-      "NOTES_TEMPLATE": "Predložak za opis zadatka",
-      "TITLE": "Zadaci"
-    },
     "POMODORO": {
       "BREAK_DURATION": "Trajanje kratkih pauza",
       "CYCLES_BEFORE_LONGER_BREAK": "Započni dužu pauzu nakon određenog broja radnih sesija",
@@ -1386,6 +1376,16 @@
       "NOTIFICATION_TITLE": "Pauziraj!",
       "SNOOZE_TIME": "Odgodi mjerenje vremena kad te program zatraži da pauziraš",
       "TITLE": "Podsjetnik za pauzu"
+    },
+    "TASKS": {
+      "DEFAULT_PROJECT": "Standardni projekt za nove zadatke",
+      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "Automatski dodaj oznaku danas zadacima koje si obrađivao/la",
+      "IS_AUTO_MARK_PARENT_AS_DONE": "Automatski označi nadređeni zadatak kao obavljen kada su sve podzadatke obavljene",
+      "IS_CONFIRM_BEFORE_DELETE": "Potvrdi prije brisanja zadataka",
+      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "Omogući Markdown formatiranje u bilješkama zadataka",
+      "IS_TRAY_SHOW_CURRENT": "Prikaži trenutni zadatak u donjoj traci sustava / izborniku stanja (samo desktop mac/windows računala)",
+      "NOTES_TEMPLATE": "Predložak za opis zadatka",
+      "TITLE": "Zadaci"
     },
     "TIME_TRACKING": {
       "HELP": "Rapèl pou swiv tan an se yon banyè pou parèt nan ka ou bliye kòmanse swiv tan.",

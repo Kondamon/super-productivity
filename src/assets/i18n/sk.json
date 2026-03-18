@@ -109,6 +109,12 @@
       "FORM_SECTION": {
         "HELP": "<p>Here you can configure SuperProductivity to list uncompleted CalDav todos for a specific project in the task creation panel in the daily planning view. They will be listed as suggestions and will provide a link to the todo as well as more information about it.</p> <p>In addition you can automatically add and sync all uncompleted todos to your task backlog.</p><p>To make it work for nextcloud on mobile and web, you might need to whitelist \"https://app.super-productivity.com\" via the nextcloud app <a href='https://apps.nextcloud.com/apps/webapppassword'>webapppassword<a>.</p>"
       },
+      "ISSUE_CONTENT": {
+        "DESCRIPTION": "Popis",
+        "LABELS": "Štítky",
+        "STATUS": "Stav",
+        "SUMMARY": "Zhrnutie"
+      },
       "S": {
         "CALENDAR_NOT_FOUND": "CalDav: Kalendár \"{{calendarName}}\" nebol nájdený",
         "CALENDAR_READ_ONLY": "CalDav: Kalendár \"{{calendarName}}\" je iba na čítanie",
@@ -146,17 +152,6 @@
       "BTN_DONT_BOTHER": "Už ma neobťažuj",
       "TITLE": "🙈 Prosím, odpusťte nám, ale...",
       "TXT": "Projektu by ste nesmierne pomohli, keby ste mu <strong>dali dobré hodnotenie, ak sa vám páči!</strong>"
-    },
-    "VOICE_REMINDER": {
-      "FORM": {
-        "HELP": "Opakuje nakonfigurovanú frázu každých X pri sledovaní času úlohy.",
-        "L_INTERVAL": "Interval na opakovanie frázy",
-        "L_TEXT": "Text",
-        "L_TEXT_DESCRIPTION": "Napr: \"Pracujte na ${currentTaskTitle}!\"",
-        "L_VOICE": "Vyberte hlas",
-        "L_VOICE_DESCRIPTION": "Vyberte hlas",
-        "TITLE": "Hlasová pripomienka"
-      }
     },
     "DROPBOX": {
       "S": {
@@ -334,6 +329,9 @@
       },
       "DEFAULT_PROJECT_DESCRIPTION": "Projekt priradený k úlohám vytvoreným z problémov.",
       "DEFAULT_PROJECT_LABEL": "Predvolený projekt Super produktivita",
+      "DIALOG": {
+        "ADVANCED_CONFIG": "Pokročilé nastavenia"
+      },
       "HOW_TO_GET_A_TOKEN": "Ako získať token?",
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Priradený",
@@ -579,7 +577,17 @@
         "PLACEHOLDER_3": "Kde sa stratilo sústredenie - a ako ho môžete ochrániť?",
         "PLACEHOLDER_4": "Ktorá úloha vám dodala energiu? Ktorá ju vyčerpala?",
         "PLACEHOLDER_5": "Jedna vec na opakovanie. Jedna vec na zmenu.",
+        "REMIND_LABEL": "Pripomeňte mi to zajtra",
+        "REMINDER_CREATED": "Pripomienka reflexie naplánovaná na zajtra",
+        "REMINDER_ERROR": "Nepodarilo sa naplánovať pripomienku",
+        "REMINDER_NEEDS_TEXT": "Napíšte reflexiu predtým, než požiadate o pripomienku",
+        "REMINDER_TASK_TITLE": "Znovu navštívte poznámku reflexie",
         "TITLE": "Poznámka reflexie"
+      }
+    },
+    "NEXTCLOUD_DECK": {
+      "ISSUE_CONTENT": {
+        "LABELS": "Štítky"
       }
     },
     "NOTE": {
@@ -777,6 +785,10 @@
       "WEEK_TITLE": "Týždeň {{nr}} ({{timeSpent}})"
     },
     "REDMINE": {
+      "DIALOG_TRACK_TIME": {
+        "ACTIVITY": "Aktivita",
+        "TIME_SPENT": "Strávený čas"
+      },
       "FORM": {
         "API_KEY": "Prístupový kľúč API",
         "HOST": "Hostiteľ (napr.: https://redmine.org)",
@@ -821,6 +833,8 @@
       },
       "END": "Ukončenie práce",
       "INSERT_BEFORE": "Pred",
+      "MONTH": "Mesiac",
+      "NOW": "Teraz",
       "PLAN_END_DAY": "Plán na konci dňa",
       "PLAN_START_DAY": "Plán na začiatku dňa",
       "SHIFT_KEY_INFO": "Podržte Shift pre prepnutie režimu plánovania dňa",
@@ -857,6 +871,10 @@
         "TYPE_CLICK_COUNTER": "Počítadlo kliknutí",
         "TYPE_REPEATED_COUNTDOWN": "Opakované odpočítavanie",
         "TYPE_STOPWATCH": "Stopky"
+      },
+      "HABIT_TRACKER": {
+        "NEXT_WEEK": "Ďalší týždeň",
+        "TODAY": "Dnes"
       },
       "S": {
         "GOAL_REACHED_1": "Dosiahli ste svoj dnešný cieľ!",
@@ -929,7 +947,16 @@
         "SAVE_AND_ENABLE": "Uložiť a povoliť synchronizáciu",
         "TITLE": "Nastaviť synchronizáciu"
       },
+      "D_RESTORE": {
+        "BTN_RESTORE": "Obnoviť",
+        "CONFIRM_TITLE": "Potvrdiť obnovenie"
+      },
       "FORM": {
+        "BTN_CHANGE_PASSWORD": "Zmeniť heslo",
+        "FILE_BASED": {
+          "BTN_CHANGE_PASSWORD": "Zmeniť heslo",
+          "L_CONFIRM_PASSWORD": "Potvrdiť heslo"
+        },
         "L_ENABLE_COMPRESSION": "Povoliť kompresie (rýchlejší prenos údajov)",
         "L_ENABLE_ENCRYPTION": "Povolenie koncového šifrovania (experimentálne) - znemožnite poskytovateľovi synchronizácie prístup k vašim údajom",
         "L_ENABLE_SYNCING": "Povoliť synchronizáciu",
@@ -939,6 +966,11 @@
         "L_SYNC_PROVIDER": "Poskytovateľ synchronizácie",
         "LOCAL_FILE": {
           "L_SYNC_FOLDER_PATH": "Cesta k priečinku synchronizácie"
+        },
+        "SUPER_SYNC": {
+          "BTN_CHANGE_PASSWORD": "Zmeniť heslo",
+          "L_CONFIRM_PASSWORD": "Potvrdiť heslo",
+          "SETUP_ENCRYPTION_BTN": "Nastaviť heslo"
         },
         "TITLE": "Synchronizácia",
         "WEB_DAV": {
@@ -1113,6 +1145,9 @@
         "UNSCHEDULE_TASK": "Zrušenie plánovania úlohy",
         "UPDATE_ISSUE_DATA": "Aktualizujte údaje o probléme"
       },
+      "D_CONFIRM_DELETE": {
+        "OK": "Odstrániť"
+      },
       "D_CONFIRM_SHORT_SYNTAX_NEW_TAG": {
         "MSG": "Chcete vytvoriť nový tag {{tagsTxt}}?",
         "OK": "Vytvoriť značku"
@@ -1120,6 +1155,13 @@
       "D_CONFIRM_SHORT_SYNTAX_NEW_TAGS": {
         "MSG": "Chcete vytvoriť nové značky {{tagsTxt}}?",
         "OK": "Vytvoriť značky"
+      },
+      "D_DEADLINE": {
+        "QA_NEXT_MONTH": "Ďalší mesiac",
+        "QA_NEXT_WEEK": "Ďalší týždeň",
+        "QA_TODAY": "Dnes",
+        "QA_TOMORROW": "Zajtra",
+        "RO_NEVER": "Nikdy"
       },
       "D_REMINDER_VIEW": {
         "ADD_ALL_TO_TODAY": "Pridať všetko k dnešnému dňu",
@@ -1248,11 +1290,15 @@
         "ADD": "Add Repeat Task Config",
         "ADVANCED_CFG": "Advanced configuration",
         "EDIT": "Edit Repeat Task Config",
+        "HEATMAP_LABEL": "Aktivita",
         "HELP1": "Repeating tasks are meant for daily chores, e.g.: \"Organization\", \"Daily Meeting\", \"Code Review\", \"Checking emails\" or similar tasks which are likely to occur again and again.",
         "HELP2": "Once configured a repeating task will be recreated on every day selected below as soon as you open your project and will be automatically marked as completed at the end of the day. They will be handled as different instances. So you can freely add sub tasks etc.",
         "HELP3": "Tasks imported from Jira or Git Issues cannot be repeated.",
         "HELP4": "A note about the order field: Referring to the creation order repeatable tasks. Only in effect for repeatable tasks that are created at the same time. A lower value means a task will be higher up the list, a higher number that it will be further down. A value greater than 0 means items are created at the bottom of normal tasks.",
-        "TAG_LABEL": "Tags to add"
+        "TAG_LABEL": "Tags to add",
+        "TIME_SPENT_THIS_MONTH": "Tento mesiac",
+        "TIME_SPENT_THIS_WEEK": "Tento týždeň",
+        "TIME_SPENT_TOTAL": "Celkom"
       },
       "F": {
         "C_DAY": "Deň",
@@ -1313,18 +1359,18 @@
         "GROUP_SCHEDULED_DATE": "Naplánovaný dátum",
         "GROUP_TAG": "Tag",
         "RESET_ALL": "Resetovať všetko",
+        "SAVE_SORT": "Uložiť ako predvolené",
         "SCHEDULED_NEXT_MONTH": "Ďalší mesiac",
         "SCHEDULED_NEXT_WEEK": "Ďalší týždeň",
         "SCHEDULED_THIS_MONTH": "Tento mesiac",
         "SCHEDULED_THIS_WEEK": "Tento týždeň",
         "SCHEDULED_TODAY": "Dnes",
         "SCHEDULED_TOMORROW": "Zajtra",
+        "SORT": "Zoradiť",
         "SORT_CREATION_DATE": "Dátum vytvorenia",
         "SORT_DEFAULT": "Predvolené",
         "SORT_NAME": "Meno",
-        "SAVE_SORT": "Uložiť ako predvolené",
         "SORT_SCHEDULED_DATE": "Naplánovaný dátum",
-        "SORT": "Zoradiť",
         "TIME_1HOUR": "> 1 hodina",
         "TIME_2HOUR": "> 2 hodiny",
         "TIME_10MIN": "> 10 minút",
@@ -1366,6 +1412,17 @@
         "TASK": "Úloha",
         "TRACK_TO": "Track to:",
         "UNTRACKED_TIME": "Nesledovaný čas:"
+      }
+    },
+    "VOICE_REMINDER": {
+      "FORM": {
+        "HELP": "Opakuje nakonfigurovanú frázu každých X pri sledovaní času úlohy.",
+        "L_INTERVAL": "Interval na opakovanie frázy",
+        "L_TEXT": "Text",
+        "L_TEXT_DESCRIPTION": "Napr: \"Pracujte na ${currentTaskTitle}!\"",
+        "L_VOICE": "Vyberte hlas",
+        "L_VOICE_DESCRIPTION": "Vyberte hlas",
+        "TITLE": "Hlasová pripomienka"
       }
     },
     "WORKLOG": {
@@ -1470,12 +1527,17 @@
     "MINUTES": "{{m}} minutes",
     "MOVE_BACKWARD": "Posunúť späť",
     "MOVE_FORWARD": "Posunúť dopredu",
+    "NEXT": "Ďalej",
     "NO_CON": "You are currently offline. Please reconnect to the internet.",
     "NONE": "None",
     "OK": "Ok",
     "OVERDUE": "Oneskorené",
+    "PASSWORD_STRENGTH_STRONG": "Silné",
+    "PASSWORD_STRENGTH_WEAK": "Slabý",
+    "PROCESSING": "Spracováva sa",
     "REMOVE": "Remove",
     "SAVE": "Save",
+    "SHARE": "Zdieľať",
     "SUBMIT": "Odoslať",
     "TITLE": "Title",
     "TODAY_TAG_TITLE": "Today",
@@ -1495,6 +1557,7 @@
       "PROJECT_NOTES": "Poznámky k projektu",
       "SCHEDULE": "Harmonogram",
       "SCHEDULE_DAY_PANEL": "Panel denného rozvrhu",
+      "SEARCH": "Hľadať",
       "SYNC_BUTTON": "Tlačidlo synchronizácie",
       "TIME_TRACKING": "Časovač na sledovanie času",
       "TITLE": "Funkcie aplikácie",
@@ -1513,6 +1576,11 @@
       "CHECK_UPDATES": "Kontrola vzdialených aktualizácií každých X",
       "HELP": "V aplikácii Super Productivity môžete integrovať kalendáre, ktoré vám budú pripomínať a pridávať ich ako úlohy. Integrácia funguje pomocou formátu iCal. Aby to fungovalo, musia byť vaše kalendáre prístupné buď cez internet, alebo prostredníctvom súborového systému.",
       "SHOW_BANNER_THRESHOLD": "Zobraziť upozornenie X pred udalosťou (prázdne pre vypnuté)"
+    },
+    "CLIPBOARD_IMAGES": {
+      "SELECT_PATH": "Vybrať priečinok",
+      "SORT_BY": "Triediť podľa",
+      "SORT_NEWEST": "Najnovšie najprv"
     },
     "EVALUATION": {
       "IS_HIDE_EVALUATION_SHEET": "Hide evaluation sheet on daily summary",
@@ -1619,6 +1687,7 @@
       "SV": "Svenska",
       "TIME_LOCALE": "Formát času podľa lokality",
       "TIME_LOCALE_AUTO": "Predvolené systémové",
+      "TIME_LOCALE_CS_CZ": "Český - 24-hodinový",
       "TIME_LOCALE_DE_DE": "Nemecký - 24-hodinový",
       "TIME_LOCALE_DESCRIPTION": "Vyberte lokalitu pre formátovanie času. Rôzne lokality používajú rôzne konvencie (12h vs 24h formát)",
       "TIME_LOCALE_EN_GB": "Anglický (UK) - 24-hodinový",
@@ -1630,11 +1699,10 @@
       "TIME_LOCALE_KO_KR": "Kórejský - 12-hodinový AM/PM",
       "TIME_LOCALE_PT_BR": "Portugalský (Brazília) - 24-hodinový",
       "TIME_LOCALE_RU_RU": "Ruský - 24-hodinový",
-      "TIME_LOCALE_TR_TR": "Turecký - 24-hodinový",
-      "TIME_LOCALE_ZH_CN": "Čínsky (zjednodušený) - 24-hodinový",
-      "TIME_LOCALE_CS_CZ": "Český - 24-hodinový",
       "TIME_LOCALE_SK_SK": "Slovenský - 24-hodinový",
+      "TIME_LOCALE_TR_TR": "Turecký - 24-hodinový",
       "TIME_LOCALE_UK_UA": "Ukrajinský - 24-hodinový",
+      "TIME_LOCALE_ZH_CN": "Čínsky (zjednodušený) - 24-hodinový",
       "TITLE": "Jazyk",
       "TR": "Türkçe",
       "UK": "Українська",
@@ -1668,16 +1736,6 @@
       "THEME_SELECT_LABEL": "Vybrať tému",
       "TITLE": "Rôzne nastavenia"
     },
-    "TASKS": {
-      "DEFAULT_PROJECT": "Predvolený projekt pre nové úlohy",
-      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "Automaticky pridať dnes tag k upravovaným úlohám",
-      "IS_AUTO_MARK_PARENT_AS_DONE": "Automaticky označiť rodičovskú úlohu ako dokončenú, keď sú všetky podúlohy dokončené",
-      "IS_CONFIRM_BEFORE_DELETE": "Potvrdiť pred odstránením úloh",
-      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "Povoliť formátovanie Markdown v poznámkach k úlohám",
-      "IS_TRAY_SHOW_CURRENT": "Zobraziť aktuálnu úlohu v systémovej lište / stavovom menu (iba desktop Mac/Windows)",
-      "NOTES_TEMPLATE": "Šablóna poznámok k úlohe",
-      "TITLE": "Úlohy"
-    },
     "POMODORO": {
       "BREAK_DURATION": "Dĺžka krátkych prestávok",
       "CYCLES_BEFORE_LONGER_BREAK": "Začnite dlhšiu prestávku po X pracovných stretnutiach",
@@ -1700,6 +1758,7 @@
       "L_WORK_END": "Work Day End",
       "L_WORK_START": "Work Day Start",
       "LUNCH_BREAK_START_END_DESCRIPTION": "napr. 13:00",
+      "MONTH": "Mesiac",
       "TITLE": "Schedule",
       "WORK_START_END_DESCRIPTION": "e.g. 17:00"
     },
@@ -1732,6 +1791,16 @@
       "NOTIFICATION_TITLE": "Take a break!",
       "SNOOZE_TIME": "Snooze time when prompted to take a break",
       "TITLE": "Break Reminder"
+    },
+    "TASKS": {
+      "DEFAULT_PROJECT": "Predvolený projekt pre nové úlohy",
+      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "Automaticky pridať dnes tag k upravovaným úlohám",
+      "IS_AUTO_MARK_PARENT_AS_DONE": "Automaticky označiť rodičovskú úlohu ako dokončenú, keď sú všetky podúlohy dokončené",
+      "IS_CONFIRM_BEFORE_DELETE": "Potvrdiť pred odstránením úloh",
+      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "Povoliť formátovanie Markdown v poznámkach k úlohám",
+      "IS_TRAY_SHOW_CURRENT": "Zobraziť aktuálnu úlohu v systémovej lište / stavovom menu (iba desktop Mac/Windows)",
+      "NOTES_TEMPLATE": "Šablóna poznámok k úlohe",
+      "TITLE": "Úlohy"
     },
     "TIME_TRACKING": {
       "HELP": "Pripomienka sledovania času je banner, ktorý sa zobrazí v prípade, že ste zabudli spustiť sledovanie času.",
@@ -1835,6 +1904,7 @@
     },
     "METRICS": "Metrika",
     "NO_TASKS_TO_TRACK": "Najprv pridajte úlohu na začatie sledovania času",
+    "NOTES": "Poznámky",
     "PLANNER": "Plánovač",
     "PROJECT_MENU": "Ponuka projektu",
     "PROJECTS": "Projekty",
@@ -1845,6 +1915,7 @@
     "SHARE_TASK_LIST_MARKDOWN": "Zdieľať zoznam úloh",
     "SIDE_PANEL_MENU": "Bočný panel menu",
     "TAGS": "Štítky",
+    "TASK_LIST": "Zoznam úloh",
     "TOGGLE_SHOW_ISSUE_PANEL": "Zobraziť/skryť panel problémov",
     "TOGGLE_SHOW_NOTES": "Zobraziť/skryť Poznámky k projektu",
     "TOGGLE_TRACK_TIME": "Začať/pozastaviť sledovanie času",
@@ -1933,6 +2004,7 @@
     "GRANT_PERMISSION": "Udeľ povolenie",
     "HOOKS": "Háčiky",
     "ID": "ID:",
+    "INDEX_HTML_NOT_LOADED": "Plugin index.html nebol načítaný",
     "INSTALL_PLUGIN": "Inštalovať plugin",
     "INSTALL_WARNING": "Pred inštaláciou pluginu sa uistite, že dôverujete jeho zdroju a rozumiete požadovaným povoleniam.",
     "INSTALLING": "Inštalujem...",
@@ -1992,7 +2064,11 @@
     "PRIVACY_POLICY": "Privacy Policy",
     "PROJECT_SETTINGS": "Project Specific Settings",
     "PROVIDE_FEEDBACK": "Provide Feedback",
+    "RELOAD": "Znova načítať",
     "SYNC_EXPORT": "Sync & Export",
+    "TABS": {
+      "PLUGINS": "Pluginy"
+    },
     "TAG_SETTINGS": "Tag Specific Settings"
   },
   "SCHEDULE": {
@@ -2004,6 +2080,15 @@
     "REPEATED_TASKS": "Repeated tasks",
     "SCHEDULED_TASKS": "Scheduled tasks",
     "SCHEDULED_TASKS_WITH_TIME": "Naplánované úlohy s pripomienkou"
+  },
+  "THEMES": {
+    "blue": "Modrá",
+    "green": "zelená",
+    "pink": "Ružová",
+    "purple": "fialová",
+    "SELECT_THEME": "Vybrať tému",
+    "teal": "Tyrkysová",
+    "yellow": "žltá"
   },
   "USER_PROFILES": {
     "ACTIVE": "Aktívny",

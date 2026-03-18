@@ -104,10 +104,17 @@
         "CALDAV_RESOURCE": "Navnet på CalDav-ressursen (kalenderen)",
         "CALDAV_URL": "CalDav URL (den grunnleggende URL-en)",
         "CALDAV_USER": "Ditt CalDav-brukernavn",
-        "IS_TRANSITION_ISSUES_ENABLED": "Fullfør CalDav-oppgavene automatisk når oppgaven er fullført"
+        "IS_TRANSITION_ISSUES_ENABLED": "Fullfør CalDav-oppgavene automatisk når oppgaven er fullført",
+        "TWO_WAY_SYNC_OFF": "Av"
       },
       "FORM_SECTION": {
         "HELP": "<p>Her kan du konfigurere SuperProductivity til å liste ufullførte CalDav-oppgaver for et spesifikt prosjekt i opprettingspanelet for oppgaver i den daglige planleggingsvisningen. De vil bli listet som forslag og vil gi en lenke til oppgaven samt mer informasjon om den.<\\/p> <p>I tillegg kan du automatisk legge til og synkronisere alle ufullførte oppgaver til oppgavelisten din.<\\/p><p>For at det skal fungere for Nextcloud i nettappen, må du kanskje hviteliste \"https:\\/\\/app.super-productivity.com\" via Nextcloud-appen <a href='https:\\/\\/apps.nextcloud.com\\/apps\\/webapppassword'>webapppassword<a>.<\\/p>"
+      },
+      "ISSUE_CONTENT": {
+        "DESCRIPTION": "Beskrivelse",
+        "LABELS": "Etiketter",
+        "STATUS": "Status",
+        "SUMMARY": "Sammendrag"
       },
       "S": {
         "CALENDAR_NOT_FOUND": "CalDav: Kalender \"{{calendarName}}\" ikke funnet",
@@ -146,17 +153,6 @@
       "BTN_DONT_BOTHER": "Ikke plag meg igjen",
       "TITLE": "🙈 Vennligst tilgi oss, men...",
       "TXT": "Du vil hjelpe prosjektet enormt ved å <strong>gi det en god vurdering, hvis du liker det!</strong>"
-    },
-    "VOICE_REMINDER": {
-      "FORM": {
-        "HELP": "Gjentar den konfigurerte frasen hver X når du sporer tid til en oppgave.",
-        "L_INTERVAL": "Intervall for å gjenta frasen",
-        "L_TEXT": "Tekst",
-        "L_TEXT_DESCRIPTION": "F.eks: \"Jobb på ${currentTaskTitle}!\"",
-        "L_VOICE": "Velg en stemme",
-        "L_VOICE_DESCRIPTION": "Velg en stemme",
-        "TITLE": "Stemmepåminnelse"
-      }
     },
     "DROPBOX": {
       "S": {
@@ -334,6 +330,9 @@
       },
       "DEFAULT_PROJECT_DESCRIPTION": "Prosjekt som er tilordnet oppgaver som er opprettet fra problemer.",
       "DEFAULT_PROJECT_LABEL": "Standard superproduktivitetsprosjekt",
+      "DIALOG": {
+        "ADVANCED_CONFIG": "Avansert konfigurasjon"
+      },
       "HOW_TO_GET_A_TOKEN": "Hvordan får man et token?",
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Tildelt",
@@ -372,6 +371,9 @@
         "ISSUE_UPDATE_SINGLE": "{{issueProviderName}}: Oppdaterte data for \"{{issueTitle}}\"",
         "POLLING_BACKLOG": "{{issueProviderName}}: Polling etter ny {{issuesStr}}",
         "POLLING_CHANGES": "{{issueProviderName}}: Pollingendringer for {{issuesStr}}"
+      },
+      "TWO_WAY_SYNC": {
+        "OFF": "Av"
       }
     },
     "ISSUE_PANEL": {
@@ -527,7 +529,8 @@
         "TIME_FRAME_2_WEEKS": "2 uker",
         "TIME_FRAME_LABEL": "Tidsramme",
         "TIME_FRAME_MAX": "Maks",
-        "TIME_SPENT": "Tid brukt"
+        "TIME_SPENT": "Tid brukt",
+        "YEAR": "År"
       },
       "EVAL_FORM": {
         "DAILY_STATE": "Daglig tilstand",
@@ -579,7 +582,17 @@
         "PLACEHOLDER_3": "Hvor glapp fokuset - og hvordan kan du beskytte det?",
         "PLACEHOLDER_4": "Hvilken oppgave ga deg energi? Hvilken tappet den?",
         "PLACEHOLDER_5": "En ting å gjenta. En ting å endre.",
+        "REMIND_LABEL": "Minne meg på dette i morgen",
+        "REMINDER_CREATED": "Påminnelse om refleksjon planlagt til i morgen",
+        "REMINDER_ERROR": "Kunne ikke planlegge påminnelsen",
+        "REMINDER_NEEDS_TEXT": "Skriv en refleksjon før du ber om en påminnelse",
+        "REMINDER_TASK_TITLE": "Gå gjennom refleksjonsnotatet igjen",
         "TITLE": "Refleksjonsnotat"
+      }
+    },
+    "NEXTCLOUD_DECK": {
+      "ISSUE_CONTENT": {
+        "LABELS": "Etiketter"
       }
     },
     "NOTE": {
@@ -777,6 +790,11 @@
       "WEEK_TITLE": "Uke {{nr}} ({{timeSpent}})"
     },
     "REDMINE": {
+      "DIALOG_TRACK_TIME": {
+        "ACTIVITY": "Aktivitet",
+        "STARTED": "Startet",
+        "TIME_SPENT": "Brukt tid"
+      },
       "FORM": {
         "API_KEY": "API-tilgangsnøkkel",
         "HOST": "Vert (f.eks.: https://redmine.org)",
@@ -821,6 +839,8 @@
       },
       "END": "Arbeidets slutt",
       "INSERT_BEFORE": "Før",
+      "MONTH": "Måned",
+      "NOW": "Nå",
       "PLAN_END_DAY": "Plan ved dagens slutt",
       "PLAN_START_DAY": "Planlegg ved dagens begynnelse",
       "SHIFT_KEY_INFO": "Hold Shift for å bytte dagplanleggingsmodus",
@@ -857,6 +877,10 @@
         "TYPE_CLICK_COUNTER": "Klikk på teller",
         "TYPE_REPEATED_COUNTDOWN": "Gjentatt nedtelling",
         "TYPE_STOPWATCH": "Stoppeklokke"
+      },
+      "HABIT_TRACKER": {
+        "NEXT_WEEK": "Neste uke",
+        "TODAY": "I dag"
       },
       "S": {
         "GOAL_REACHED_1": "Du har nådd målet ditt for i dag!",
@@ -929,7 +953,20 @@
         "SAVE_AND_ENABLE": "Lagre & Aktiver synkronisering",
         "TITLE": "Konfigurer synkronisering"
       },
+      "D_RESTORE": {
+        "BTN_RESTORE": "Gjenopprett"
+      },
+      "D_SERVER_MIGRATION_CONFIRM": {
+        "SKIP": "Hopp over"
+      },
       "FORM": {
+        "BTN_CHANGE_PASSWORD": "Endre passord",
+        "FILE_BASED": {
+          "BTN_CHANGE_PASSWORD": "Endre passord",
+          "L_CONFIRM_PASSWORD": "Bekreft passord",
+          "PASSWORD_MIN_LENGTH": "Passordet må være minst 8 tegn",
+          "PASSWORDS_DONT_MATCH": "Passordene samsvarer ikke"
+        },
         "L_ENABLE_COMPRESSION": "Aktiver komprimering (raskere dataoverføring)",
         "L_ENABLE_ENCRYPTION": "Aktiver ende-til-ende-kryptering (eksperimentell) - Gjør dataene dine utilgjengelige for synkroniseringsleverandøren",
         "L_ENABLE_SYNCING": "Aktiver synkronisering",
@@ -939,6 +976,13 @@
         "L_SYNC_PROVIDER": "Synkroniseringsleverandør",
         "LOCAL_FILE": {
           "L_SYNC_FOLDER_PATH": "Stien til synkroniseringsmappen"
+        },
+        "SUPER_SYNC": {
+          "BTN_CHANGE_PASSWORD": "Endre passord",
+          "L_ACCESS_TOKEN": "Tilgangstoken",
+          "L_CONFIRM_PASSWORD": "Bekreft passord",
+          "PASSWORD_MIN_LENGTH": "Passordet må være minst 8 tegn",
+          "PASSWORDS_DONT_MATCH": "Passordene samsvarer ikke"
         },
         "TITLE": "Synkroniser",
         "WEB_DAV": {
@@ -1113,6 +1157,9 @@
         "UNSCHEDULE_TASK": "Oppheve tidsplan for oppgave",
         "UPDATE_ISSUE_DATA": "Oppdater data om problemet"
       },
+      "D_CONFIRM_DELETE": {
+        "OK": "Slett"
+      },
       "D_CONFIRM_SHORT_SYNTAX_NEW_TAG": {
         "MSG": "Ønsker du å opprette den nye taggen {{tagsTxt}}?",
         "OK": "Opprett tagg"
@@ -1120,6 +1167,14 @@
       "D_CONFIRM_SHORT_SYNTAX_NEW_TAGS": {
         "MSG": "Vil du opprette de nye taggene {{tagsTxt}}?",
         "OK": "Opprett tagger"
+      },
+      "D_DEADLINE": {
+        "QA_NEXT_MONTH": "Neste måned",
+        "QA_NEXT_WEEK": "Neste uke",
+        "QA_TODAY": "I dag",
+        "QA_TOMORROW": "I morgen",
+        "REMIND_AT": "Minne på",
+        "RO_NEVER": "Aldri"
       },
       "D_REMINDER_VIEW": {
         "ADD_ALL_TO_TODAY": "Legg alt til i dag",
@@ -1248,11 +1303,15 @@
         "ADD": "Legg til gjenta oppgavekonfigurasjon",
         "ADVANCED_CFG": "Avansert konfigurasjon",
         "EDIT": "Rediger gjenta oppgavekonfigurasjon",
+        "HEATMAP_LABEL": "Aktivitet",
         "HELP1": "Gjentatte oppgaver er ment for daglige gjøremål, for eksempel: \"Organisasjon\", \"Daglig møte\", \"Kodegjennomgang\", \"Kontrollerer e-post\" eller lignende oppgaver som sannsynligvis vil oppstå igjen og igjen.",
         "HELP2": "Når den er konfigurert, blir en gjentatt oppgave gjenskapt hver dag valgt nedenfor så snart du åpner prosjektet, og vil automatisk bli merket som fullført på slutten av dagen. De vil bli håndtert som forskjellige forekomster. Så du kan fritt legge til underoppgaver etc.",
         "HELP3": "Oppgaver importert fra Jira eller Git Issues kan ikke gjentas. Alle påminnelser vil også bli slettet på en gjentatt oppgave.",
         "HELP4": "En merknad om bestillingsfeltet: Refererer til opprettelsesrekkefølgen for repeterbare oppgaver. Gjelder kun for repeterbare oppgaver som opprettes samtidig. En lavere verdi betyr at en oppgave kommer høyere opp på listen, et høyere tall betyr at den kommer lenger ned. En verdi større enn 0 betyr at elementer opprettes nederst i listen over normale oppgaver.",
-        "TAG_LABEL": "Merker å legge til"
+        "TAG_LABEL": "Merker å legge til",
+        "TIME_SPENT_THIS_MONTH": "Denne måneden",
+        "TIME_SPENT_THIS_WEEK": "Denne uken",
+        "TIME_SPENT_TOTAL": "Totalt"
       },
       "F": {
         "C_DAY": "Dag",
@@ -1313,18 +1372,18 @@
         "GROUP_SCHEDULED_DATE": "Planlagt dato",
         "GROUP_TAG": "Tag",
         "RESET_ALL": "Tilbakestill alt",
+        "SAVE_SORT": "Lagre som standard",
         "SCHEDULED_NEXT_MONTH": "Neste måned",
         "SCHEDULED_NEXT_WEEK": "Neste uke",
         "SCHEDULED_THIS_MONTH": "Denne måneden",
         "SCHEDULED_THIS_WEEK": "Denne uken",
         "SCHEDULED_TODAY": "I dag",
         "SCHEDULED_TOMORROW": "I morgen",
+        "SORT": "Sorter",
         "SORT_CREATION_DATE": "Opprettelsesdato",
         "SORT_DEFAULT": "Standard",
         "SORT_NAME": "Navn",
-        "SAVE_SORT": "Lagre som standard",
         "SORT_SCHEDULED_DATE": "Planlagt dato",
-        "SORT": "Sorter",
         "TIME_1HOUR": "> 1 time",
         "TIME_2HOUR": "> 2 timer",
         "TIME_10MIN": "> 10 minutter",
@@ -1366,6 +1425,17 @@
         "TASK": "Oppgave",
         "TRACK_TO": "Spor til:",
         "UNTRACKED_TIME": "Usporet tid:"
+      }
+    },
+    "VOICE_REMINDER": {
+      "FORM": {
+        "HELP": "Gjentar den konfigurerte frasen hver X når du sporer tid til en oppgave.",
+        "L_INTERVAL": "Intervall for å gjenta frasen",
+        "L_TEXT": "Tekst",
+        "L_TEXT_DESCRIPTION": "F.eks: \"Jobb på ${currentTaskTitle}!\"",
+        "L_VOICE": "Velg en stemme",
+        "L_VOICE_DESCRIPTION": "Velg en stemme",
+        "TITLE": "Stemmepåminnelse"
       }
     },
     "WORKLOG": {
@@ -1455,6 +1525,7 @@
     "CLOSE": "Lukk",
     "COMPLETE": "Fullfør",
     "CONFIRM": "Bekreft",
+    "CONTINUE": "Fortsett",
     "DELETE": "Slett",
     "DISMISS": "Avvis",
     "DO_IT": "Gjør det!",
@@ -1470,12 +1541,17 @@
     "MINUTES": "{{m}} minutter",
     "MOVE_BACKWARD": "Flytt bakover",
     "MOVE_FORWARD": "Flytt fremover",
+    "NEXT": "Neste",
     "NO_CON": "Du er for øyeblikket frakoblet. Koble til Internett på nytt.",
     "NONE": "Ingen",
     "OK": "Ok",
     "OVERDUE": "Forfallen",
+    "PASSWORD_STRENGTH_FAIR": "Rettferdig",
+    "PASSWORD_STRENGTH_STRONG": "Sterk",
+    "PASSWORD_STRENGTH_WEAK": "Svak",
     "REMOVE": "Ta vekk",
     "SAVE": "Lagre",
+    "SHARE": "Del",
     "SUBMIT": "Send inn",
     "TITLE": "Tittel",
     "TODAY_TAG_TITLE": "I dag",
@@ -1495,6 +1571,7 @@
       "PROJECT_NOTES": "Prosjektnotater",
       "SCHEDULE": "Planlegge",
       "SCHEDULE_DAY_PANEL": "Planlegg dag-panel",
+      "SEARCH": "Søk",
       "SYNC_BUTTON": "Synkroniseringsknapp",
       "TIME_TRACKING": "Stoppeklokketidsregistrering",
       "TITLE": "App-funksjoner",
@@ -1513,6 +1590,11 @@
       "CHECK_UPDATES": "Se etter eksterne oppdateringer hver X",
       "HELP": "Du kan integrere kalendere for å bli påminnet og legge dem til som oppgaver i Super Productivity. Integreringen fungerer ved å bruke iCal-formatet. For at dette skal fungere, må kalenderne dine være tilgjengelige enten via Internett eller filsystemet.",
       "SHOW_BANNER_THRESHOLD": "Vis et varsel X før hendelsen (blank for deaktivert)"
+    },
+    "CLIPBOARD_IMAGES": {
+      "DELETE": "Slett bilde",
+      "SELECT_PATH": "Velg mappe",
+      "SORT_BY": "Sorter etter"
     },
     "EVALUATION": {
       "IS_HIDE_EVALUATION_SHEET": "Skjul evalueringsark på daglig sammendrag",
@@ -1619,6 +1701,7 @@
       "SV": "Svenska",
       "TIME_LOCALE": "Tidsformat lokalitet",
       "TIME_LOCALE_AUTO": "Systemstandard",
+      "TIME_LOCALE_CS_CZ": "Tsjekkisk - 24-timers",
       "TIME_LOCALE_DE_DE": "Tysk - 24-timers",
       "TIME_LOCALE_DESCRIPTION": "Velg et lokalområde for tidsformatering. Ulike lokalområder bruker forskjellige konvensjoner (12-timers vs 24-timers format)",
       "TIME_LOCALE_EN_GB": "Engelsk (UK) - 24-timers",
@@ -1630,11 +1713,10 @@
       "TIME_LOCALE_KO_KR": "Koreansk - 12-timers AM/PM",
       "TIME_LOCALE_PT_BR": "Portugisisk (Brasil) - 24-timers",
       "TIME_LOCALE_RU_RU": "Russisk - 24-timers",
-      "TIME_LOCALE_TR_TR": "Tyrkisk - 24-timers",
-      "TIME_LOCALE_ZH_CN": "Kinesisk (forenklet) - 24-timers",
-      "TIME_LOCALE_CS_CZ": "Tsjekkisk - 24-timers",
       "TIME_LOCALE_SK_SK": "Slovakisk - 24-timers",
+      "TIME_LOCALE_TR_TR": "Tyrkisk - 24-timers",
       "TIME_LOCALE_UK_UA": "Ukrainsk - 24-timers",
+      "TIME_LOCALE_ZH_CN": "Kinesisk (forenklet) - 24-timers",
       "TITLE": "Språk",
       "TR": "Türkçe",
       "UK": "Українська",
@@ -1668,16 +1750,6 @@
       "THEME_SELECT_LABEL": "Velg tema",
       "TITLE": "Diverse innstillinger"
     },
-    "TASKS": {
-      "DEFAULT_PROJECT": "Standard prosjekt som skal brukes til oppgaver hvis ingen er spesifisert",
-      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "Legg til dagens tag automatisk for å jobbe med oppgaver",
-      "IS_AUTO_MARK_PARENT_AS_DONE": "Merk foreldreoppgaven som ferdig når alle underoppgaver er utført",
-      "IS_CONFIRM_BEFORE_DELETE": "Bekreft før du sletter oppgaver",
-      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "Aktiver Markdown-formatering i oppgavenotater",
-      "IS_TRAY_SHOW_CURRENT": "Vis gjeldende oppgave i skuffen / statusmenyen (kun desktop mac/windows)",
-      "NOTES_TEMPLATE": "Mal for oppgavebeskrivelse",
-      "TITLE": "Oppgaver"
-    },
     "POMODORO": {
       "BREAK_DURATION": "Varighet av korte pauser",
       "CYCLES_BEFORE_LONGER_BREAK": "Start lengre pause etter X-arbeidsøkter",
@@ -1700,6 +1772,7 @@
       "L_WORK_END": "Arbeidsdagens slutt",
       "L_WORK_START": "Start på arbeidsdagen",
       "LUNCH_BREAK_START_END_DESCRIPTION": "f.eks. 13:00",
+      "MONTH": "Måned",
       "TITLE": "Planlegge",
       "WORK_START_END_DESCRIPTION": "f.eks. 17:00"
     },
@@ -1732,6 +1805,16 @@
       "NOTIFICATION_TITLE": "Ta en pause!",
       "SNOOZE_TIME": "Snooze-tid når du blir bedt om å ta en pause",
       "TITLE": "Pausepåminnelse"
+    },
+    "TASKS": {
+      "DEFAULT_PROJECT": "Standard prosjekt som skal brukes til oppgaver hvis ingen er spesifisert",
+      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "Legg til dagens tag automatisk for å jobbe med oppgaver",
+      "IS_AUTO_MARK_PARENT_AS_DONE": "Merk foreldreoppgaven som ferdig når alle underoppgaver er utført",
+      "IS_CONFIRM_BEFORE_DELETE": "Bekreft før du sletter oppgaver",
+      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "Aktiver Markdown-formatering i oppgavenotater",
+      "IS_TRAY_SHOW_CURRENT": "Vis gjeldende oppgave i skuffen / statusmenyen (kun desktop mac/windows)",
+      "NOTES_TEMPLATE": "Mal for oppgavebeskrivelse",
+      "TITLE": "Oppgaver"
     },
     "TIME_TRACKING": {
       "HELP": "Påminnelsen om tidsregistrering er et banner som vises i tilfelle du har glemt å starte tidsregistreringen.",
@@ -1835,6 +1918,7 @@
     },
     "METRICS": "Beregninger",
     "NO_TASKS_TO_TRACK": "Legg til en oppgave først for å begynne å spore tid",
+    "NOTES": "Notater",
     "PLANNER": "Planlegger",
     "PROJECT_MENU": "Prosjektmeny",
     "PROJECTS": "Prosjekter",
@@ -1845,6 +1929,7 @@
     "SHARE_TASK_LIST_MARKDOWN": "Del oppgaveliste",
     "SIDE_PANEL_MENU": "Sidepanelmeny",
     "TAGS": "Merker",
+    "TASK_LIST": "Oppgaveliste",
     "TOGGLE_SHOW_ISSUE_PANEL": "Vis/Gjem problempanel",
     "TOGGLE_SHOW_NOTES": "Vis / skjul prosjektnotater",
     "TOGGLE_TRACK_TIME": "Start / stopp sporingstid",
@@ -1933,6 +2018,7 @@
     "GRANT_PERMISSION": "Gi tillatelse",
     "HOOKS": "Hooks",
     "ID": "ID:",
+    "INDEX_HTML_NOT_LOADED": "Plugin index.html ikke lastet",
     "INSTALL_PLUGIN": "Installer plugin",
     "INSTALL_WARNING": "Før du installerer en plugin, sørg for at du stoler på kilden og forstår tillatelsene den ber om.",
     "INSTALLING": "Installerer...",
@@ -1992,7 +2078,12 @@
     "PRIVACY_POLICY": "Privat policy",
     "PROJECT_SETTINGS": "Prosjektspesifikke innstillinger",
     "PROVIDE_FEEDBACK": "Gi tilbakemelding",
+    "RELOAD": "Last inn på nytt",
     "SYNC_EXPORT": "Synkroniser og eksporter",
+    "TABS": {
+      "GENERAL": "Generell",
+      "PLUGINS": "Plugins"
+    },
     "TAG_SETTINGS": "Merk spesifikke innstillinger"
   },
   "SCHEDULE": {
@@ -2004,6 +2095,9 @@
     "REPEATED_TASKS": "Gjentatte oppgaver",
     "SCHEDULED_TASKS": "Planlagte oppgaver",
     "SCHEDULED_TASKS_WITH_TIME": "Planlagte oppgaver med påminnelse"
+  },
+  "THEMES": {
+    "SELECT_THEME": "Velg tema"
   },
   "USER_PROFILES": {
     "ACTIVE": "Aktiv",

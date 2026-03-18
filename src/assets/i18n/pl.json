@@ -122,7 +122,8 @@
         "CALDAV_RESOURCE": "Nazwa zasobu CalDav do synchronizacji (kalendarz)",
         "CALDAV_URL": "CalDav URL (podstawowy URL)",
         "CALDAV_USER": "Twój użytkownik CalDav",
-        "IS_TRANSITION_ISSUES_ENABLED": "Automatycznie zakończ zadania CalDav po wykonaniu zadania"
+        "IS_TRANSITION_ISSUES_ENABLED": "Automatycznie zakończ zadania CalDav po wykonaniu zadania",
+        "TWO_WAY_SYNC_OFF": "Wyłącz"
       },
       "FORM_SECTION": {
         "HELP": "<p>Tutaj możesz skonfigurować Super Productivity tak, aby w panelu tworzenia zadań w widoku planowania dziennego wyświetlał listę niewykonanych zadań CalDav dla wybranego projektu. Będą one pokazywane jako sugestie i będą zawierały link do zadania oraz dodatkowe informacje.</p><p>Możesz też automatycznie dodać i synchronizować wszystkie niewykonane zadania do zaległości.</p>"
@@ -184,17 +185,6 @@
       "BTN_DONT_BOTHER": "Nie zawracaj mi więcej głowy",
       "TITLE": "🙈 Proszę nam wybaczyć, ale...",
       "TXT": "Bardzo pomógłbyś projektowi, <strong>wystawiając mu dobrą ocenę, jeśli Ci się spodoba!</strong>"
-    },
-    "VOICE_REMINDER": {
-      "FORM": {
-        "HELP": "Powtarza skonfigurowaną frazę co X podczas śledzenia czasu wykonywania zadania.",
-        "L_INTERVAL": "Interwał powtarzania frazy",
-        "L_TEXT": "Tekst",
-        "L_TEXT_DESCRIPTION": "Np: \"Pracuj nad ${currentTaskTitle}!\"",
-        "L_VOICE": "Wybierz głos",
-        "L_VOICE_DESCRIPTION": "Wybierz głos",
-        "TITLE": "Przypomnienie głosowe"
-      }
     },
     "DROPBOX": {
       "S": {
@@ -376,6 +366,9 @@
       },
       "DEFAULT_PROJECT_DESCRIPTION": "Projekt przypisany do zadań utworzonych ze spraw.",
       "DEFAULT_PROJECT_LABEL": "Domyślny projekt super produktywności",
+      "DIALOG": {
+        "ADVANCED_CONFIG": "Zaawansowana konfiguracja"
+      },
       "HOW_TO_GET_A_TOKEN": "Jak zdobyć token?",
       "ISSUE_CONTENT": {
         "ASSIGNEE": "Osoba przypisana",
@@ -404,6 +397,7 @@
         "WORKLOG": "Dziennik pracy"
       },
       "S": {
+        "CONNECTION_FAILED": "Błąd połączenia",
         "ERR_GENERIC": "{{issueProviderName}} Błąd: {{errTxt}}",
         "ERR_NETWORK": "{{issueProviderName}}: Żądanie nie powiodło się z powodu błędu sieci po stronie klienta.",
         "ERR_NOT_CONFIGURED": "{{issueProviderName}}: Nieprawidłowo skonfigurowane",
@@ -414,6 +408,9 @@
         "ISSUE_UPDATE_SINGLE": "{{issueProviderName}}: Zaktualizowane dane dla \"{{issueTitle}}\"",
         "POLLING_BACKLOG": "{{issueProviderName}}: odpytywanie o nowe {{issuesStr}}",
         "POLLING_CHANGES": "{{issueProviderName}}: Zmiany odpytywania dla {{issuesStr}}."
+      },
+      "TWO_WAY_SYNC": {
+        "OFF": "Wyłącz"
       }
     },
     "ISSUE_PANEL": {
@@ -569,7 +566,8 @@
         "TIME_FRAME_2_WEEKS": "2 tygodnie",
         "TIME_FRAME_LABEL": "Okres czasu",
         "TIME_FRAME_MAX": "MAKS",
-        "TIME_SPENT": "Czas spędzony"
+        "TIME_SPENT": "Czas spędzony",
+        "YEAR": "Rok"
       },
       "EVAL_FORM": {
         "DAILY_STATE": "Stan dzienny",
@@ -622,6 +620,12 @@
         "PLACEHOLDER_4": "Które zadanie dało Ci energię? Które ją wyczerpało?",
         "PLACEHOLDER_5": "Jedna rzecz do powtórzenia. Jedna rzecz do zmiany.",
         "TITLE": "Notatka refleksyjna"
+      }
+    },
+    "NEXTCLOUD_DECK": {
+      "ISSUE_CONTENT": {
+        "ASSIGNED_USERS": "Przypisani użytkownicy",
+        "LABELS": "Etykiety"
       }
     },
     "NOTE": {
@@ -819,6 +823,11 @@
       "WEEK_TITLE": "Tydzień {{nr}} ({{timeSpent}})"
     },
     "REDMINE": {
+      "DIALOG_TRACK_TIME": {
+        "ACTIVITY": "Aktywność",
+        "STARTED": "Rozpoczęto",
+        "TIME_SPENT": "Czas spędzony"
+      },
       "FORM": {
         "API_KEY": "Klucz dostępu API",
         "HOST": "Host (np.: https://redmine.org)",
@@ -863,6 +872,8 @@
       },
       "END": "Koniec pracy",
       "INSERT_BEFORE": "Przed",
+      "MONTH": "Miesiąc",
+      "NOW": "Teraz",
       "PLAN_END_DAY": "Plan na koniec dnia",
       "PLAN_START_DAY": "Plan na początek dnia",
       "SHIFT_KEY_INFO": "Przytrzymaj Shift, aby przełączyć tryb planowania dnia",
@@ -899,6 +910,10 @@
         "TYPE_CLICK_COUNTER": "Licznik kliknięć",
         "TYPE_REPEATED_COUNTDOWN": "Powtarzane odliczanie",
         "TYPE_STOPWATCH": "Stopwatch"
+      },
+      "HABIT_TRACKER": {
+        "NEXT_WEEK": "Następny tydzień",
+        "TODAY": "Dzisiaj"
       },
       "S": {
         "GOAL_REACHED_1": "Osiągnąłeś swój dzisiejszy cel!",
@@ -971,7 +986,20 @@
         "SAVE_AND_ENABLE": "Zapisz i Włącz synchronizację",
         "TITLE": "Skonfiguruj synchronizację"
       },
+      "D_RESTORE": {
+        "BTN_RESTORE": "Przywróć"
+      },
+      "D_SERVER_MIGRATION_CONFIRM": {
+        "SKIP": "Pomiń"
+      },
       "FORM": {
+        "BTN_CHANGE_PASSWORD": "Zmień hasło",
+        "FILE_BASED": {
+          "BTN_CHANGE_PASSWORD": "Zmień hasło",
+          "L_CONFIRM_PASSWORD": "Potwierdź hasło",
+          "PASSWORD_MIN_LENGTH": "Hasło musi mieć co najmniej 8 znaków",
+          "PASSWORDS_DONT_MATCH": "Hasła nie są zgodne"
+        },
         "L_ENABLE_COMPRESSION": "Włącz kompresję (szybszy transfer danych)",
         "L_ENABLE_ENCRYPTION": "Włączenie szyfrowania end-to-end (eksperymentalne) - uniemożliwienie dostępu do danych dostawcy synchronizacji.",
         "L_ENABLE_SYNCING": "Włącz Syncing",
@@ -981,6 +1009,14 @@
         "L_SYNC_PROVIDER": "Sync Provider",
         "LOCAL_FILE": {
           "L_SYNC_FOLDER_PATH": "Ścieżka folderu synchronizacji"
+        },
+        "SUPER_SYNC": {
+          "BTN_CHANGE_PASSWORD": "Zmień hasło",
+          "L_ACCESS_TOKEN": "Token dostępu",
+          "L_CONFIRM_PASSWORD": "Potwierdź hasło",
+          "PASSWORD_MIN_LENGTH": "Hasło musi mieć co najmniej 8 znaków",
+          "PASSWORDS_DONT_MATCH": "Hasła nie są zgodne",
+          "SETUP_ENCRYPTION_BTN": "Ustaw hasło"
         },
         "TITLE": "Sync",
         "WEB_DAV": {
@@ -1091,6 +1127,7 @@
         "ESTIMATE_BUTTON": "Szacowanie",
         "PLACEHOLDER_CREATE": "Tytuł zadania #tag @16:00",
         "PLACEHOLDER_SEARCH": "Dodaj istniejące zadanie lub problemy...",
+        "REPEAT_BUTTON": "Powtórz",
         "SEARCH_INFO_TEXT": "Wyszukaj i dodaj problemy oraz zadania z archiwum i innych projektów",
         "TAGS_BUTTON": "Tagi",
         "TODAY": "Dzisiaj",
@@ -1110,10 +1147,13 @@
         "ADD_ATTACHMENT": "Dodaj attachment",
         "ADD_SUB_TASK": "Dodaj Sub Task",
         "ATTACHMENTS": "Attachments ({{nr}})",
+        "CREATED_ON": "Utworzone na ",
+        "DEADLINE": "Termin ostateczny",
         "DUE": "Zaplanowane na",
         "LOCAL_ATTACHMENTS": "Local Attachments",
         "NOTES": "Description",
         "PARENT": "Parent",
+        "REMINDER": "Przypomnienie",
         "REPEAT": "Repeat",
         "SCHEDULE_TASK": "Schedule Task",
         "SUB_TASKS": "Sub Tasks ({{nr}})",
@@ -1155,6 +1195,9 @@
         "UNSCHEDULE_TASK": "Anuluj harmonogram zadania",
         "UPDATE_ISSUE_DATA": "Update issue data"
       },
+      "D_CONFIRM_DELETE": {
+        "OK": "Usuń"
+      },
       "D_CONFIRM_SHORT_SYNTAX_NEW_TAG": {
         "MSG": "Czy chcesz utworzyć nowy tag {{tagsTxt}}?",
         "OK": "Utwórz tag"
@@ -1162,6 +1205,13 @@
       "D_CONFIRM_SHORT_SYNTAX_NEW_TAGS": {
         "MSG": "Czy chcesz utworzyć nowe tagi {{tagsTxt}}?",
         "OK": "Tworzenie tagów"
+      },
+      "D_DEADLINE": {
+        "QA_NEXT_MONTH": "Następny miesiąc",
+        "QA_NEXT_WEEK": "Następny tydzień",
+        "QA_TODAY": "Dzisiaj",
+        "QA_TOMORROW": "Jutro",
+        "RO_NEVER": "Nigdy"
       },
       "D_REMINDER_VIEW": {
         "ADD_ALL_TO_TODAY": "Dodaj wszystkie do dzisiaj",
@@ -1171,6 +1221,7 @@
         "DISMISS_ALL_REMINDERS_KEEP_TODAY": "Odrzuć wszystkie przypomnienia (Zachowaj w dzisiaj)",
         "DISMISS_REMINDER_KEEP_TODAY": "Odrzuć przypomnienie (Zachowaj w dzisiaj)",
         "DONE": "Gotowe",
+        "DUE_SECTION": "Zaplanowany",
         "DUE_TASK": "Due task",
         "DUE_TASKS": "Due tasks",
         "RESCHEDULE_EDIT": "Edytuj (Zmień harmonogram)",
@@ -1290,11 +1341,15 @@
         "ADD": "Dodaj Repeat Task Config",
         "ADVANCED_CFG": "Zaawansowana konfiguracja",
         "EDIT": "Edytuj Repeat Task Config",
+        "HEATMAP_LABEL": "Aktywność",
         "HELP1": "Zadania powtarzalne są przeznaczone dla codziennych/regularnych czynności, np. „Planowanie dzienne”, „Daily Meeting”, „Code Review”, „Sprawdzanie poczty” itd.",
         "HELP2": "Po skonfigurowaniu zadanie powtarzalne będzie automatycznie tworzone w wybrane dni, gdy otworzysz projekt, i pojawi się na liście zadań.",
         "HELP3": "Zadania importowane z Jiry lub systemów Git mogą również być oznaczone jako powtarzalne. Wszystkie przypomnienia będą także usuwane w przypadku zadania powtarzalnego.",
         "HELP4": "Uwaga dotycząca pola zamówienia: Odnosi się do kolejności tworzenia zadań powtarzalnych. Działa tylko w przypadku zadań powtarzalnych, które są tworzone w tym samym czasie. Niższa wartość oznacza, że zadanie będzie znajdować się wyżej na liście, a wyższa, że będzie znajdować się niżej. Wartość większa niż 0 oznacza, że elementy są tworzone na dole normalnych zadań.",
-        "TAG_LABEL": "Tags to add"
+        "TAG_LABEL": "Tags to add",
+        "TIME_SPENT_THIS_MONTH": "Ten miesiąc",
+        "TIME_SPENT_THIS_WEEK": "W tym tygodniu",
+        "TIME_SPENT_TOTAL": "Suma"
       },
       "F": {
         "C_DAY": "Dzień",
@@ -1355,18 +1410,18 @@
         "GROUP_SCHEDULED_DATE": "Data zaplanowana",
         "GROUP_TAG": "Tag",
         "RESET_ALL": "Zresetuj wszystko",
+        "SAVE_SORT": "Zapisz jako domyślne",
         "SCHEDULED_NEXT_MONTH": "Następny miesiąc",
         "SCHEDULED_NEXT_WEEK": "Następny tydzień",
         "SCHEDULED_THIS_MONTH": "Ten miesiąc",
         "SCHEDULED_THIS_WEEK": "W tym tygodniu",
         "SCHEDULED_TODAY": "Dzisiaj",
         "SCHEDULED_TOMORROW": "Jutro",
+        "SORT": "Sortuj",
         "SORT_CREATION_DATE": "Data utworzenia",
         "SORT_DEFAULT": "Domyślny",
         "SORT_NAME": "Nazwa",
-        "SAVE_SORT": "Zapisz jako domyślne",
         "SORT_SCHEDULED_DATE": "Data zaplanowana",
-        "SORT": "Sortuj",
         "TIME_1HOUR": "> 1 godzina",
         "TIME_2HOUR": "> 2 godziny",
         "TIME_10MIN": "> 10 minut",
@@ -1408,6 +1463,17 @@
         "TASK": "Zadanie",
         "TRACK_TO": "Przypisz do:",
         "UNTRACKED_TIME": "Czas nie przypisany:"
+      }
+    },
+    "VOICE_REMINDER": {
+      "FORM": {
+        "HELP": "Powtarza skonfigurowaną frazę co X podczas śledzenia czasu wykonywania zadania.",
+        "L_INTERVAL": "Interwał powtarzania frazy",
+        "L_TEXT": "Tekst",
+        "L_TEXT_DESCRIPTION": "Np: \"Pracuj nad ${currentTaskTitle}!\"",
+        "L_VOICE": "Wybierz głos",
+        "L_VOICE_DESCRIPTION": "Wybierz głos",
+        "TITLE": "Przypomnienie głosowe"
       }
     },
     "WORKLOG": {
@@ -1493,10 +1559,12 @@
   "G": {
     "ADD": "Dodaj",
     "ADVANCED_CFG": "Zaawansowana konfiguracja",
+    "APPLY": "Zastosuj",
     "CANCEL": "Cancel",
     "CLOSE": "Zamknij",
     "COMPLETE": "Zakończone",
     "CONFIRM": "Potwierdź",
+    "CONTINUE": "Kontynuuj",
     "DELETE": "Usuń",
     "DISMISS": "Dismiss",
     "DO_IT": "Do it!",
@@ -1512,12 +1580,17 @@
     "MINUTES": "{{m}} minutes",
     "MOVE_BACKWARD": "Przesuń wstecz",
     "MOVE_FORWARD": "Przesuń do przodu",
+    "NEXT": "Następny",
     "NO_CON": "Brak połączenia",
     "NONE": "None",
     "OK": "Ok",
     "OVERDUE": "Zaległy",
+    "PASSWORD_STRENGTH_STRONG": "Silne",
+    "PASSWORD_STRENGTH_WEAK": "Słabe",
+    "PROCESSING": "Przetwarzanie",
     "REMOVE": "Remove",
     "SAVE": "Zapisz",
+    "SHARE": "Udostępnij",
     "SUBMIT": "Prześlij",
     "TITLE": "Tytuł",
     "TODAY_TAG_TITLE": "Dzisiaj",
@@ -1531,12 +1604,14 @@
       "BOARDS": "Tablice",
       "DONATE_PAGE": "Strona darowizn",
       "FOCUS_MODE": "Tryb skupienia",
+      "HABITS": "Nawyki",
       "HELP": "Włącz lub wyłącz konkretne funkcje aplikacji w całym interfejsie użytkownika.",
       "ISSUES_PANEL": "Panel problemów",
       "PLANNER": "Planer",
       "PROJECT_NOTES": "Notatki projektowe",
       "SCHEDULE": "Harmonogram",
       "SCHEDULE_DAY_PANEL": "Panel dnia harmonogramu",
+      "SEARCH": "Szukaj",
       "SYNC_BUTTON": "Przycisk synchronizacji",
       "TIME_TRACKING": "Śledzenie czasu za pomocą stopera",
       "TITLE": "Funkcje aplikacji",
@@ -1555,6 +1630,15 @@
       "CHECK_UPDATES": "Sprawdzanie zdalnych aktualizacji co X",
       "HELP": "Możesz zintegrować kalendarze, aby otrzymywać przypomnienia i dodawać je jako zadania w Super Productivity. Integracja działa przy użyciu formatu iCal. Aby to zadziałało, kalendarze muszą być dostępne przez Internet lub za pośrednictwem systemu plików.",
       "SHOW_BANNER_THRESHOLD": "Pokaż powiadomienie X przed zdarzeniem (puste dla wyłączonego)"
+    },
+    "CLIPBOARD_IMAGES": {
+      "DELETE": "Usuń obraz",
+      "DELETE_ALL": "Usuń wszystko",
+      "PATH_TITLE": "Lokalizacja magazynowania",
+      "SELECT_PATH": "Wybierz folder",
+      "SORT_BY": "Sortuj według",
+      "SORT_NEWEST": "Najnowsze na początku",
+      "SORT_OLDEST": "Najstarsze najpierw"
     },
     "EVALUATION": {
       "IS_HIDE_EVALUATION_SHEET": "Hide evaluation sheet on daily summary",
@@ -1661,6 +1745,7 @@
       "SV": "Svenska",
       "TIME_LOCALE": "Format daty i czasu lokalny",
       "TIME_LOCALE_AUTO": "Domyślny systemowy",
+      "TIME_LOCALE_CS_CZ": "Czeski: 24-godzinny, DD. MM. YYYY",
       "TIME_LOCALE_DE_DE": "Niemiecki: 24-godzinny, DD.MM.RRRR",
       "TIME_LOCALE_DESCRIPTION": "UWAGA: teraz ta opcja nie może zmienić formatu wprowadzania czasu (12/24 godziny), ponieważ jest kontrolowana przez Twój system operacyjny",
       "TIME_LOCALE_EN_GB": "Angielski (UK): 24-godzinny, DD/MM/RRRR",
@@ -1672,11 +1757,10 @@
       "TIME_LOCALE_KO_KR": "Koreański: 12-godzinny AM/PM, RRRR. MM. DD",
       "TIME_LOCALE_PT_BR": "Portugalski (Brazylia): 24-godzinny, DD/MM/YYYY",
       "TIME_LOCALE_RU_RU": "Rosyjski: 24-godzinny, DD.MM.YYYY",
-      "TIME_LOCALE_TR_TR": "Turecki: 24-godzinny, DD.MM.YYYY",
-      "TIME_LOCALE_ZH_CN": "Chiński (uproszczony): 24-godzinny, YYYY/MM/DD",
-      "TIME_LOCALE_CS_CZ": "Czeski: 24-godzinny, DD. MM. YYYY",
       "TIME_LOCALE_SK_SK": "Słowacki: 24-godzinny, DD. MM. YYYY",
+      "TIME_LOCALE_TR_TR": "Turecki: 24-godzinny, DD.MM.YYYY",
       "TIME_LOCALE_UK_UA": "Ukraiński: 24-godzinny, DD.MM.YYYY",
+      "TIME_LOCALE_ZH_CN": "Chiński (uproszczony): 24-godzinny, YYYY/MM/DD",
       "TITLE": "Język",
       "TR": "Türkçe",
       "UK": "Українська",
@@ -1710,16 +1794,6 @@
       "THEME_SELECT_LABEL": "Wybierz motyw",
       "TITLE": "Ustawienia różne"
     },
-    "TASKS": {
-      "DEFAULT_PROJECT": "Domyślny projekt dla nowych zadań",
-      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "Automatycznie dodaj zadania, nad którymi pracowano, do dzisiaj",
-      "IS_AUTO_MARK_PARENT_AS_DONE": "Automatycznie oznaczaj zadanie nadrzędne jako ukończone, gdy wszystkie zadania podrzędne są ukończone",
-      "IS_CONFIRM_BEFORE_DELETE": "Potwierdź przed usunięciem zadań",
-      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "Włącz formatowanie Markdown w notatkach zadań",
-      "IS_TRAY_SHOW_CURRENT": "Pokaż bieżące zadanie w zasobniku / menu statusu (tylko desktop mac/windows)",
-      "NOTES_TEMPLATE": "Domyślny szablon notatek zadania",
-      "TITLE": "Zadania"
-    },
     "POMODORO": {
       "BREAK_DURATION": "Duration of short breaks",
       "CYCLES_BEFORE_LONGER_BREAK": "Start longer break after X work sessions",
@@ -1742,6 +1816,7 @@
       "L_WORK_END": "Work Day End",
       "L_WORK_START": "Work Day Start",
       "LUNCH_BREAK_START_END_DESCRIPTION": "np. 13:00",
+      "MONTH": "Miesiąc",
       "TITLE": "Schedule",
       "WORK_START_END_DESCRIPTION": "e.g. 17:00"
     },
@@ -1774,6 +1849,16 @@
       "NOTIFICATION_TITLE": "Zrób sobie przerwę!",
       "SNOOZE_TIME": "Snooze time when prompted to take a break",
       "TITLE": "Break Reminder"
+    },
+    "TASKS": {
+      "DEFAULT_PROJECT": "Domyślny projekt dla nowych zadań",
+      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "Automatycznie dodaj zadania, nad którymi pracowano, do dzisiaj",
+      "IS_AUTO_MARK_PARENT_AS_DONE": "Automatycznie oznaczaj zadanie nadrzędne jako ukończone, gdy wszystkie zadania podrzędne są ukończone",
+      "IS_CONFIRM_BEFORE_DELETE": "Potwierdź przed usunięciem zadań",
+      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "Włącz formatowanie Markdown w notatkach zadań",
+      "IS_TRAY_SHOW_CURRENT": "Pokaż bieżące zadanie w zasobniku / menu statusu (tylko desktop mac/windows)",
+      "NOTES_TEMPLATE": "Domyślny szablon notatek zadania",
+      "TITLE": "Zadania"
     },
     "TIME_TRACKING": {
       "HELP": "Przypomnienie o śledzeniu czasu to baner wyświetlany na wypadek, gdybyś zapomniał rozpocząć śledzenie czasu.",
@@ -1864,6 +1949,7 @@
     "DUPLICATE_PROJECT": "Duplikat",
     "ENTER_FOCUS_MODE": "Włącz tryb skupienia",
     "GO_TO_TASK_LIST": "Idź do listy zadań",
+    "HABITS": "Nawyki",
     "HELP": "Pomoc",
     "HM": {
       "CALENDARS": "Jak to zrobić: Połącz kalendarze",
@@ -1877,6 +1963,8 @@
     },
     "METRICS": "Metryki",
     "NO_TASKS_TO_TRACK": "Najpierw dodaj zadanie, aby rozpocząć śledzenie czasu",
+    "NOTES": "Notatki",
+    "OPEN_APP_FEATURES": "Otwórz ustawienia",
     "PLANNER": "Planista",
     "PROJECT_MENU": "Menu projektu",
     "PROJECTS": "Projekty",
@@ -1887,6 +1975,8 @@
     "SHARE_TASK_LIST_MARKDOWN": "Udostępnij listę zadań",
     "SIDE_PANEL_MENU": "Menu panelu bocznego",
     "TAGS": "Tagi",
+    "TASK_LIST": "Lista zadań",
+    "TASKS": "Żądania",
     "TOGGLE_SHOW_ISSUE_PANEL": "Pokaż/Ukryj panel problemów",
     "TOGGLE_SHOW_NOTES": "Pokaż/Ukryj Notatki Projektu",
     "TOGGLE_TRACK_TIME": "Start/Stop zliczania czasu",
@@ -2034,7 +2124,14 @@
     "PRIVACY_POLICY": "Polityka Prywatności",
     "PROJECT_SETTINGS": "Ustawienia dla Projektu",
     "PROVIDE_FEEDBACK": "Prześlij Opinię",
+    "RELOAD": "Przeładuj",
     "SYNC_EXPORT": "Synchronizacja i Eksport",
+    "TABS": {
+      "GENERAL": "Ogólny",
+      "PLUGINS": "Wtyczki",
+      "PRODUCTIVITY": "Produktywność",
+      "TASKS": "Żądania"
+    },
     "TAG_SETTINGS": "Taguj Określone Ustawienie"
   },
   "SCHEDULE": {
@@ -2046,6 +2143,13 @@
     "REPEATED_TASKS": "Powtarzające się zadania",
     "SCHEDULED_TASKS": "Zaplanowane zadania",
     "SCHEDULED_TASKS_WITH_TIME": "Zaplanowane zadania z przypomnieniem"
+  },
+  "THEMES": {
+    "blue": "Niebieski",
+    "green": "zielony",
+    "pink": "różowy",
+    "SELECT_THEME": "Wybierz motyw",
+    "yellow": "żółty"
   },
   "USER_PROFILES": {
     "ACTIVE": "Aktywny",

@@ -141,17 +141,6 @@
       "TITLE": "🙈 لطفا ما را ببخشید، اما...",
       "TXT": "اگر دوست دارید، با <strong>دادن امتیاز خوب، به پروژه کمک زیادی خواهید کرد!</strong>"
     },
-    "VOICE_REMINDER": {
-      "FORM": {
-        "HELP": "هنگام پیگیری زمان انجام یک کار، عبارت پیکربندی شده را هر X تکرار می کند.",
-        "L_INTERVAL": "فاصله برای تکرار عبارت",
-        "L_TEXT": "متن",
-        "L_TEXT_DESCRIPTION": "به عنوان مثال: \"روی ${currentTaskTitle}کار کنید!\"",
-        "L_VOICE": "یک صدا را انتخاب کنید",
-        "L_VOICE_DESCRIPTION": "صدا را انتخاب کنید",
-        "TITLE": "یادآوری صوتی"
-      }
-    },
     "DROPBOX": {
       "S": {
         "OFFLINE": "Dropbox: همگام سازی امکان پذیر نیست ، زیرا آفلاین است",
@@ -1269,18 +1258,18 @@
         "GROUP_SCHEDULED_DATE": "تاریخ برنامه ریزی شده",
         "GROUP_TAG": "برچسب",
         "RESET_ALL": "همه را بازنشانی کنید",
+        "SAVE_SORT": "ذخیره به عنوان پیش فرض",
         "SCHEDULED_NEXT_MONTH": "ماه آینده",
         "SCHEDULED_NEXT_WEEK": "هفته ی بعد",
         "SCHEDULED_THIS_MONTH": "این ماه",
         "SCHEDULED_THIS_WEEK": "این هفته",
         "SCHEDULED_TODAY": "امروز",
         "SCHEDULED_TOMORROW": "فردا",
+        "SORT": "مرتب سازی",
         "SORT_CREATION_DATE": "تاریخ ایجاد",
         "SORT_DEFAULT": "پیش فرض",
         "SORT_NAME": "نام",
-        "SAVE_SORT": "ذخیره به عنوان پیش فرض",
         "SORT_SCHEDULED_DATE": "تاریخ برنامه ریزی شده",
-        "SORT": "مرتب سازی",
         "TIME_1HOUR": "> 1 ساعت",
         "TIME_2HOUR": "> 2 ساعت",
         "TIME_10MIN": "> 10 دقیقه",
@@ -1322,6 +1311,17 @@
         "TASK": "وظیفه",
         "TRACK_TO": "پیگیری به:",
         "UNTRACKED_TIME": "زمان ردیابی نشده:"
+      }
+    },
+    "VOICE_REMINDER": {
+      "FORM": {
+        "HELP": "هنگام پیگیری زمان انجام یک کار، عبارت پیکربندی شده را هر X تکرار می کند.",
+        "L_INTERVAL": "فاصله برای تکرار عبارت",
+        "L_TEXT": "متن",
+        "L_TEXT_DESCRIPTION": "به عنوان مثال: \"روی ${currentTaskTitle}کار کنید!\"",
+        "L_VOICE": "یک صدا را انتخاب کنید",
+        "L_VOICE_DESCRIPTION": "صدا را انتخاب کنید",
+        "TITLE": "یادآوری صوتی"
       }
     },
     "WORKLOG": {
@@ -1550,6 +1550,7 @@
       "SK": "اسلواکی",
       "TIME_LOCALE": "مکان فرمت زمانی",
       "TIME_LOCALE_AUTO": "پیش فرض سیستم",
+      "TIME_LOCALE_CS_CZ": "چکی - ۲۴ ساعته",
       "TIME_LOCALE_DE_DE": "آلمانی - ۲۴ ساعته",
       "TIME_LOCALE_DESCRIPTION": "یک مکان برای قالب بندی زمان انتخاب کنید. مکان های مختلف از قراردادهای متفاوتی استفاده می کنند (فرمت ۱۲ ساعته در مقابل ۲۴ ساعته)",
       "TIME_LOCALE_EN_GB": "انگلیسی (بریتانیا) - ۲۴ ساعته",
@@ -1561,11 +1562,10 @@
       "TIME_LOCALE_KO_KR": "کره ای - ۱۲ ساعت صبح/بعدازظهر",
       "TIME_LOCALE_PT_BR": "پرتغالی (برزیل) - ۲۴ ساعته",
       "TIME_LOCALE_RU_RU": "روسی - ۲۴ ساعته",
-      "TIME_LOCALE_TR_TR": "ترکی - ۲۴ ساعته",
-      "TIME_LOCALE_ZH_CN": "چینی (ساده شده) - ۲۴ ساعته",
-      "TIME_LOCALE_CS_CZ": "چکی - ۲۴ ساعته",
       "TIME_LOCALE_SK_SK": "سلوفاکی - ۲۴ ساعته",
+      "TIME_LOCALE_TR_TR": "ترکی - ۲۴ ساعته",
       "TIME_LOCALE_UK_UA": "اوکراینی - ۲۴ ساعته",
+      "TIME_LOCALE_ZH_CN": "چینی (ساده شده) - ۲۴ ساعته",
       "TITLE": "زبان",
       "TR": "ترکچه",
       "UK": "اوکراین",
@@ -1596,16 +1596,6 @@
       "THEME_EXPERIMENTAL": "تم (آزمایشی)",
       "THEME_SELECT_LABEL": "انتخاب تم",
       "TITLE": "Misc Settings"
-    },
-    "TASKS": {
-      "DEFAULT_PROJECT": "پروژه پیش فرض برای کارهای جدید در صورت عدم تعیین پروژه دیگر",
-      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "اضافه کردن خودکار کارهای انجام شده به امروز",
-      "IS_AUTO_MARK_PARENT_AS_DONE": "علامت گذاری خودکار کار اصلی به عنوان انجام شده، زمانی که تمام زیر کارها انجام شده باشند",
-      "IS_CONFIRM_BEFORE_DELETE": "تأیید قبل از حذف کارها",
-      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "فعال کردن فرمت بندی Markdown در یادداشت های کار",
-      "IS_TRAY_SHOW_CURRENT": "نمایش کار فعلی در منوی سینی / وضعیت (فقط دسک تاپ مک/ویندوز)",
-      "NOTES_TEMPLATE": "الگوی توضیحات کار",
-      "TITLE": "کارها"
     },
     "POMODORO": {
       "BREAK_DURATION": "Duration of short breaks",
@@ -1660,6 +1650,16 @@
       "NOTIFICATION_TITLE": "استراحت کن!",
       "SNOOZE_TIME": "زمان استراحت را به تعویق بیندازید",
       "TITLE": "یادآوری استراحت"
+    },
+    "TASKS": {
+      "DEFAULT_PROJECT": "پروژه پیش فرض برای کارهای جدید در صورت عدم تعیین پروژه دیگر",
+      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "اضافه کردن خودکار کارهای انجام شده به امروز",
+      "IS_AUTO_MARK_PARENT_AS_DONE": "علامت گذاری خودکار کار اصلی به عنوان انجام شده، زمانی که تمام زیر کارها انجام شده باشند",
+      "IS_CONFIRM_BEFORE_DELETE": "تأیید قبل از حذف کارها",
+      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "فعال کردن فرمت بندی Markdown در یادداشت های کار",
+      "IS_TRAY_SHOW_CURRENT": "نمایش کار فعلی در منوی سینی / وضعیت (فقط دسک تاپ مک/ویندوز)",
+      "NOTES_TEMPLATE": "الگوی توضیحات کار",
+      "TITLE": "کارها"
     },
     "TIME_TRACKING": {
       "HELP": "یادآوری ردیابی زمان بنری است که در صورت فراموش کردن شروع ردیابی زمان نمایش داده می شود.",

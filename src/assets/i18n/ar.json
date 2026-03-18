@@ -141,17 +141,6 @@
       "TITLE": "🙈 من فضلك سامحنا ، لكن ...",
       "TXT": "ستساعد المشروع بشكل كبير من خلال <strong>منحه تقييما جيدا ، إذا كنت ترغب في ذلك!</strong>"
     },
-    "VOICE_REMINDER": {
-      "FORM": {
-        "HELP": "يكرر العبارة المضبوطة مسبقاً، كل\n X\n عند تتبع الوقت لمهمة ما.",
-        "L_INTERVAL": "الفاصل الزمني لتكرار العبارة",
-        "L_TEXT": "نص",
-        "L_TEXT_DESCRIPTION": "على سبيل المثال: ”العمل على\n$currentTaskTitle”",
-        "L_VOICE": "حدد صوتا",
-        "L_VOICE_DESCRIPTION": "اختر صوتا",
-        "TITLE": "تذكير صوتي"
-      }
-    },
     "DROPBOX": {
       "S": {
         "OFFLINE": "دروب باكس: غير قادر على المزامنة ، لأنك غير متصل بالإنترنت",
@@ -1269,18 +1258,18 @@
         "GROUP_SCHEDULED_DATE": "التاريخ المحدد",
         "GROUP_TAG": "العلامه",
         "RESET_ALL": "إعادة تعيين الكل",
+        "SAVE_SORT": "حفظ كإعداد افتراضي",
         "SCHEDULED_NEXT_MONTH": "الشهر المقبل",
         "SCHEDULED_NEXT_WEEK": "الأسبوع القادم",
         "SCHEDULED_THIS_MONTH": "هذا الشهر",
         "SCHEDULED_THIS_WEEK": "هذا الأسبوع",
         "SCHEDULED_TODAY": "اليوم",
         "SCHEDULED_TOMORROW": "غداً",
+        "SORT": "فرز",
         "SORT_CREATION_DATE": "تاريخ الإنشاء",
         "SORT_DEFAULT": "افتراضي",
         "SORT_NAME": "اسم",
-        "SAVE_SORT": "حفظ كإعداد افتراضي",
         "SORT_SCHEDULED_DATE": "التاريخ المحدد",
-        "SORT": "فرز",
         "TIME_1HOUR": "> 1 ساعة",
         "TIME_2HOUR": "> 2 ساعة",
         "TIME_10MIN": "> 10 دقائق",
@@ -1322,6 +1311,17 @@
         "TASK": "مهمة",
         "TRACK_TO": "تتبع إلى:",
         "UNTRACKED_TIME": "الوقت الذي لم يتم تعقبه:"
+      }
+    },
+    "VOICE_REMINDER": {
+      "FORM": {
+        "HELP": "يكرر العبارة المضبوطة مسبقاً، كل\n X\n عند تتبع الوقت لمهمة ما.",
+        "L_INTERVAL": "الفاصل الزمني لتكرار العبارة",
+        "L_TEXT": "نص",
+        "L_TEXT_DESCRIPTION": "على سبيل المثال: ”العمل على\n$currentTaskTitle”",
+        "L_VOICE": "حدد صوتا",
+        "L_VOICE_DESCRIPTION": "اختر صوتا",
+        "TITLE": "تذكير صوتي"
       }
     },
     "WORKLOG": {
@@ -1550,6 +1550,7 @@
       "SK": "السلوفاكية",
       "TIME_LOCALE": "موقع تنسيق الوقت",
       "TIME_LOCALE_AUTO": "نظام الإعداد الافتراضي",
+      "TIME_LOCALE_CS_CZ": "التشيكية - 24 ساعة",
       "TIME_LOCALE_DE_DE": "الألمانية - 24 ساعة",
       "TIME_LOCALE_DESCRIPTION": "اختر موقعا لتنسيق الوقت. المواقع المختلفة تستخدم قواعد مختلفة (تنسيق 12 ساعة مقابل 24 ساعة)",
       "TIME_LOCALE_EN_GB": "النسخة الإنجليزية (المملكة المتحدة) - 24 ساعة",
@@ -1561,11 +1562,10 @@
       "TIME_LOCALE_KO_KR": "الكورية - 12 ساعة صباحا/مساء",
       "TIME_LOCALE_PT_BR": "البرتغالية (البرازيل) - 24 ساعة",
       "TIME_LOCALE_RU_RU": "الروسية - 24 ساعة",
-      "TIME_LOCALE_TR_TR": "تركيا - 24 ساعة",
-      "TIME_LOCALE_ZH_CN": "الصينية (المبسطة) - 24 ساعة",
-      "TIME_LOCALE_CS_CZ": "التشيكية - 24 ساعة",
       "TIME_LOCALE_SK_SK": "السلوفاكية - 24 ساعة",
+      "TIME_LOCALE_TR_TR": "تركيا - 24 ساعة",
       "TIME_LOCALE_UK_UA": "الأوكرانية - 24 ساعة",
+      "TIME_LOCALE_ZH_CN": "الصينية (المبسطة) - 24 ساعة",
       "TITLE": "لغة",
       "TR": "تركية",
       "UK": "الأوكرانية",
@@ -1595,16 +1595,6 @@
       "THEME_EXPERIMENTAL": "الموضوع (تجريبي)",
       "THEME_SELECT_LABEL": "اختيار الموضوع",
       "TITLE": "متفرقات الإعدادات"
-    },
-    "TASKS": {
-      "DEFAULT_PROJECT": "المشروع الافتراضي لإنشاء المهام الجديدة فيه",
-      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "إضافة علامة اليوم تلقائيًا للعمل على المهام الجديدة",
-      "IS_AUTO_MARK_PARENT_AS_DONE": "عند الانتهاء من جميع المهام الفرعية، يتم تلقائيًا وضع علامة على المهمة الرئيسية كمكتملة",
-      "IS_CONFIRM_BEFORE_DELETE": "تأكيد قبل حذف المهام",
-      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "تمكين تنسيق Markdown في ملاحظات المهام",
-      "IS_TRAY_SHOW_CURRENT": "إظهار المهمة الحالية في الدرج / قائمة الحالة (سطح المكتب فقط)",
-      "NOTES_TEMPLATE": "قالب وصف المهمة",
-      "TITLE": "المهام"
     },
     "POMODORO": {
       "BREAK_DURATION": "مدة الاستراحة القصيرة",
@@ -1659,6 +1649,16 @@
       "NOTIFICATION_TITLE": "خذ استراحة!",
       "SNOOZE_TIME": "غفوة الوقت عند مطالبتك بأخذ قسط من الراحة",
       "TITLE": "التذكير بالاستراحة"
+    },
+    "TASKS": {
+      "DEFAULT_PROJECT": "المشروع الافتراضي لإنشاء المهام الجديدة فيه",
+      "IS_AUTO_ADD_WORKED_ON_TO_TODAY": "إضافة علامة اليوم تلقائيًا للعمل على المهام الجديدة",
+      "IS_AUTO_MARK_PARENT_AS_DONE": "عند الانتهاء من جميع المهام الفرعية، يتم تلقائيًا وضع علامة على المهمة الرئيسية كمكتملة",
+      "IS_CONFIRM_BEFORE_DELETE": "تأكيد قبل حذف المهام",
+      "IS_MARKDOWN_FORMATTING_IN_NOTES_ENABLED": "تمكين تنسيق Markdown في ملاحظات المهام",
+      "IS_TRAY_SHOW_CURRENT": "إظهار المهمة الحالية في الدرج / قائمة الحالة (سطح المكتب فقط)",
+      "NOTES_TEMPLATE": "قالب وصف المهمة",
+      "TITLE": "المهام"
     },
     "TIME_TRACKING": {
       "HELP": "تذكير تتبع الوقت هو عبارة عن لافتة تظهر في حالة نسيانك بدء تتبع الوقت.",
