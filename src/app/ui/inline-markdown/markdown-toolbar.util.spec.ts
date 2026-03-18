@@ -10,6 +10,8 @@ import {
   applyStrikethrough,
   applyTaskList,
   handleEnterKey,
+  handleShiftTabKey,
+  handleTabKey,
   insertImage,
   insertLink,
   insertTable,
@@ -497,5 +499,118 @@ describe('handleEnterKey', () => {
     expect(result).not.toBeNull();
     expect(result!.text).toBe('- [ ] task\n\nline 3');
     expect(result!.selectionStart).toBe(11);
+  });
+});
+
+describe('handleTabKey', () => {
+  it('should return null when no list prefix', () => {
+    const result = handleTabKey('hello world', 0, 0);
+    expect(result).toBeNull();
+  });
+
+  it('should return null when selection spans multiple characters', () => {
+    const result = handleTabKey('- hello', 0, 3);
+    expect(result).toBeNull();
+  });
+
+  it('should indent when cursor at position 0 of list line', () => {
+    const text = '- [ ] task';
+    const result = handleTabKey(text, 0, 0);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('  - [ ] task');
+    expect(result!.selectionStart).toBe(2);
+  });
+
+  it('should indent when cursor at prefix end with no content', () => {
+    const text = '- [ ] ';
+    const result = handleTabKey(text, 6, 6);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('  - [ ] ');
+    expect(result!.selectionStart).toBe(8);
+  });
+
+  it('should return null when cursor is in content text', () => {
+    const text = '- [ ] hello';
+    const result = handleTabKey(text, 8, 8);
+    expect(result).toBeNull();
+  });
+
+  it('should return null when cursor at prefix end but content exists', () => {
+    const text = '- [ ] hello';
+    const result = handleTabKey(text, 6, 6);
+    expect(result).toBeNull();
+  });
+
+  it('should indent bullet list at position 0', () => {
+    const text = '- item';
+    const result = handleTabKey(text, 0, 0);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('  - item');
+    expect(result!.selectionStart).toBe(2);
+  });
+
+  it('should indent numbered list at prefix end with no content', () => {
+    const text = '1. ';
+    const result = handleTabKey(text, 3, 3);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('  1. ');
+    expect(result!.selectionStart).toBe(5);
+  });
+
+  it('should stack indentation', () => {
+    const text = '  - [ ] ';
+    const result = handleTabKey(text, 8, 8);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('    - [ ] ');
+    expect(result!.selectionStart).toBe(10);
+  });
+});
+
+describe('handleShiftTabKey', () => {
+  it('should return null when no list prefix', () => {
+    const result = handleShiftTabKey('hello world', 0, 0);
+    expect(result).toBeNull();
+  });
+
+  it('should return null when selection spans multiple characters', () => {
+    const result = handleShiftTabKey('  - hello', 0, 3);
+    expect(result).toBeNull();
+  });
+
+  it('should return null when no leading whitespace', () => {
+    const result = handleShiftTabKey('- [ ] task', 6, 6);
+    expect(result).toBeNull();
+  });
+
+  it('should remove 2 spaces of indentation', () => {
+    const text = '  - [ ] task';
+    const result = handleShiftTabKey(text, 8, 8);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- [ ] task');
+    expect(result!.selectionStart).toBe(6);
+  });
+
+  it('should remove only 1 space when only 1 exists', () => {
+    const text = ' - [ ] task';
+    const result = handleShiftTabKey(text, 7, 7);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- [ ] task');
+    expect(result!.selectionStart).toBe(6);
+  });
+
+  it('should not move cursor before line start', () => {
+    const text = '  - task';
+    const result = handleShiftTabKey(text, 1, 1);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- task');
+    expect(result!.selectionStart).toBe(0);
+  });
+
+  it('should un-indent in middle of multi-line text', () => {
+    const text = 'line 1\n  - task\nline 3';
+    const cursor = 7 + 4; // position within "  - task"
+    const result = handleShiftTabKey(text, cursor, cursor);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('line 1\n- task\nline 3');
   });
 });
