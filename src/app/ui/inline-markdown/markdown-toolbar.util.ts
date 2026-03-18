@@ -672,8 +672,9 @@ export const handleListKeydown = (
   key: string,
   shiftKey: boolean,
   ctrlKey: boolean,
+  metaKey: boolean = false,
 ): TextTransformResult | null => {
-  if (ctrlKey) {
+  if (ctrlKey || metaKey) {
     return null;
   }
   if (key === 'Enter' && !shiftKey) {

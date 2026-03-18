@@ -191,6 +191,9 @@ export class InlineMarkdownComponent implements OnInit, OnDestroy {
     if (!textarea) {
       return;
     }
+    if (ev.type !== 'keydown') {
+      return;
+    }
     const result = handleListKeydown(
       textarea.value,
       textarea.selectionStart,
@@ -198,6 +201,7 @@ export class InlineMarkdownComponent implements OnInit, OnDestroy {
       ev.key,
       ev.shiftKey,
       ev.ctrlKey,
+      ev.metaKey,
     );
     if (result) {
       ev.preventDefault();

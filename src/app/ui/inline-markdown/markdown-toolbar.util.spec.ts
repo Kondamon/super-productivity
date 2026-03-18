@@ -675,4 +675,18 @@ describe('handleListKeydown', () => {
     );
     expect(result).toBeNull();
   });
+
+  it('should return null for Meta+Enter (macOS Cmd)', () => {
+    const text = '- [ ] task';
+    const result = handleListKeydown(
+      text,
+      text.length,
+      text.length,
+      'Enter',
+      false,
+      false,
+      true,
+    );
+    expect(result).toBeNull();
+  });
 });
