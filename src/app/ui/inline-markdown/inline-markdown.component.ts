@@ -30,6 +30,7 @@ import { ClipboardImageService } from '../../core/clipboard-image/clipboard-imag
 import { TaskAttachmentService } from '../../features/tasks/task-attachment/task-attachment.service';
 import { ResolveClipboardImagesDirective } from '../../core/clipboard-image/resolve-clipboard-images.directive';
 import { ClipboardPasteHandlerService } from '../../core/clipboard-image/clipboard-paste-handler.service';
+import { handleListKeydown } from './markdown-toolbar.util';
 
 const HIDE_OVERFLOW_TIMEOUT_DURATION = 300;
 
@@ -183,6 +184,27 @@ export class InlineMarkdownComponent implements OnInit, OnDestroy {
     if ((ev.key === 'Enter' && ev.ctrlKey) || ev.code === 'Escape') {
       this.untoggleShowEdit();
       this.keyboardUnToggle.emit(ev);
+      return;
+    }
+
+    const textarea = this.textareaEl()?.nativeElement;
+    if (!textarea) {
+      return;
+    }
+    const result = handleListKeydown(
+      textarea.value,
+      textarea.selectionStart,
+      textarea.selectionEnd,
+      ev.key,
+      ev.shiftKey,
+      ev.ctrlKey,
+    );
+    if (result) {
+      ev.preventDefault();
+      textarea.value = result.text;
+      textarea.setSelectionRange(result.selectionStart, result.selectionEnd);
+      this.modelCopy.set(result.text);
+      this.resizeTextareaToFit();
     }
   }
 
