@@ -592,6 +592,75 @@ export const handleEnterKey = (
   return { text: newText, selectionStart: newCursor, selectionEnd: newCursor };
 };
 
+/**
+ * Handle Tab key to indent a list line by 2 spaces.
+ * Only acts when cursor is at line start (position 0) or at prefix end with no content.
+ * Returns null if conditions are not met (caller should not preventDefault).
+ */
+export const handleTabKey = (
+  text: string,
+  selectionStart: number,
+  selectionEnd: number,
+): TextTransformResult | null => {
+  if (selectionStart !== selectionEnd) {
+    return null;
+  }
+  const { start: lineStart, end: lineEnd } = getLineRange(text, selectionStart);
+  const currentLine = text.substring(lineStart, lineEnd);
+  const match = currentLine.match(LIST_PREFIX_REGEX);
+  if (!match) {
+    return null;
+  }
+  const [, whitespace, prefix, content] = match;
+  const prefixLen = whitespace.length + prefix.length;
+  const cursorInLine = selectionStart - lineStart;
+  const atLineStart = cursorInLine === 0;
+  const atEmptyPrefixEnd = cursorInLine === prefixLen && content.trim().length === 0;
+  if (!atLineStart && !atEmptyPrefixEnd) {
+    return null;
+  }
+  const indent = '  ';
+  const newText = text.substring(0, lineStart) + indent + text.substring(lineStart);
+  const newCursor = selectionStart + indent.length;
+  return { text: newText, selectionStart: newCursor, selectionEnd: newCursor };
+};
+
+/**
+ * Handle Shift+Tab to un-indent a list line by up to 2 spaces.
+ * Returns null if line has no leading whitespace or no list prefix.
+ */
+export const handleShiftTabKey = (
+  text: string,
+  selectionStart: number,
+  selectionEnd: number,
+): TextTransformResult | null => {
+  if (selectionStart !== selectionEnd) {
+    return null;
+  }
+  const { start: lineStart, end: lineEnd } = getLineRange(text, selectionStart);
+  const currentLine = text.substring(lineStart, lineEnd);
+  if (!currentLine.match(LIST_PREFIX_REGEX)) {
+    return null;
+  }
+  let spacesToRemove = 0;
+  while (
+    spacesToRemove < 2 &&
+    spacesToRemove < currentLine.length &&
+    currentLine[spacesToRemove] === ' '
+  ) {
+    spacesToRemove++;
+  }
+  if (spacesToRemove === 0) {
+    return null;
+  }
+  const newText =
+    text.substring(0, lineStart) +
+    currentLine.substring(spacesToRemove) +
+    text.substring(lineEnd);
+  const newCursor = Math.max(lineStart, selectionStart - spacesToRemove);
+  return { text: newText, selectionStart: newCursor, selectionEnd: newCursor };
+};
+
 export const insertTable = (
   text: string,
   selectionStart: number,
