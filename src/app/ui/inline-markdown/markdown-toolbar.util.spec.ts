@@ -9,6 +9,7 @@ import {
   applyQuote,
   applyStrikethrough,
   applyTaskList,
+  handleEnterKey,
   insertImage,
   insertLink,
   insertTable,
@@ -365,5 +366,136 @@ describe('markdown-toolbar.util', () => {
       const result = applyBulletList('**bold text**', 0, 13);
       expect(result.text).toBe('- **bold text**');
     });
+  });
+});
+
+describe('handleEnterKey', () => {
+  it('should return null when no list prefix', () => {
+    const result = handleEnterKey('hello world', 5, 5);
+    expect(result).toBeNull();
+  });
+
+  it('should return null when selection spans multiple characters', () => {
+    const result = handleEnterKey('- [ ] hello', 0, 5);
+    expect(result).toBeNull();
+  });
+
+  it('should return null when cursor is before prefix end', () => {
+    const result = handleEnterKey('- [ ] hello', 2, 2);
+    expect(result).toBeNull();
+  });
+
+  it('should continue checkbox with unchecked prefix', () => {
+    const text = '- [ ] Buy milk';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- [ ] Buy milk\n- [ ] ');
+    expect(result!.selectionStart).toBe(21);
+    expect(result!.selectionEnd).toBe(21);
+  });
+
+  it('should continue checked checkbox with unchecked prefix', () => {
+    const text = '- [x] Done';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- [x] Done\n- [ ] ');
+    expect(result!.selectionStart).toBe(17);
+  });
+
+  it('should continue bullet list', () => {
+    const text = '- Buy milk';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- Buy milk\n- ');
+    expect(result!.selectionStart).toBe(13);
+  });
+
+  it('should continue numbered list with auto-increment', () => {
+    const text = '3. Buy milk';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('3. Buy milk\n4. ');
+    expect(result!.selectionStart).toBe(15);
+  });
+
+  it('should handle multi-digit number increment', () => {
+    const text = '9. item';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('9. item\n10. ');
+    expect(result!.selectionStart).toBe(12);
+  });
+
+  it('should degrade empty checkbox to bullet', () => {
+    const text = '- [ ] ';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- ');
+    expect(result!.selectionStart).toBe(2);
+  });
+
+  it('should degrade empty checked checkbox to bullet', () => {
+    const text = '- [x] ';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- ');
+    expect(result!.selectionStart).toBe(2);
+  });
+
+  it('should degrade empty bullet to blank line', () => {
+    const text = '- ';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('');
+    expect(result!.selectionStart).toBe(0);
+  });
+
+  it('should degrade empty numbered list to blank line', () => {
+    const text = '1. ';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('');
+    expect(result!.selectionStart).toBe(0);
+  });
+
+  it('should preserve indentation on continuation', () => {
+    const text = '  - [ ] Buy milk';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('  - [ ] Buy milk\n  - [ ] ');
+    expect(result!.selectionStart).toBe(25);
+  });
+
+  it('should preserve indentation on degradation', () => {
+    const text = '  - [ ] ';
+    const result = handleEnterKey(text, text.length, text.length);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('  - ');
+    expect(result!.selectionStart).toBe(4);
+  });
+
+  it('should split line when cursor is in the middle', () => {
+    const text = '- [ ] Buy milk';
+    const result = handleEnterKey(text, 10, 10); // cursor after "Buy "
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- [ ] Buy \n- [ ] milk');
+    expect(result!.selectionStart).toBe(17);
+  });
+
+  it('should handle Enter in middle of multi-line text', () => {
+    const text = 'line 1\n- [ ] Buy milk\nline 3';
+    const cursor = 7 + 14; // end of "- [ ] Buy milk"
+    const result = handleEnterKey(text, cursor, cursor);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('line 1\n- [ ] Buy milk\n- [ ] \nline 3');
+  });
+
+  it('should degrade empty bullet in middle of text', () => {
+    const text = '- [ ] task\n- \nline 3';
+    const cursor = 13; // end of "- " on line 2
+    const result = handleEnterKey(text, cursor, cursor);
+    expect(result).not.toBeNull();
+    expect(result!.text).toBe('- [ ] task\n\nline 3');
+    expect(result!.selectionStart).toBe(11);
   });
 });
