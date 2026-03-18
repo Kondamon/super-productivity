@@ -170,6 +170,7 @@ export class DialogFullscreenMarkdownComponent implements OnInit, AfterViewInit 
       ev.key,
       ev.shiftKey,
       ev.ctrlKey,
+      ev.metaKey,
     );
     if (result) {
       ev.preventDefault();
