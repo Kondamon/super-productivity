@@ -26,7 +26,7 @@ jobs:
           persist-credentials: false
       - name: Reject non-standard registry URLs
         run: |
-          BAD_COUNT=$(grep '"resolved": "https\?://' package-lock.json | grep -cv 'registry.npmjs.org' || echo 0)
+          BAD_COUNT=$(grep '"resolved": "https\?://' package-lock.json | grep -cv 'registry.npmjs.org' || true)
           if [ "$BAD_COUNT" -gt 0 ]; then
             echo "::error::package-lock.json contains $BAD_COUNT resolved URLs pointing to a non-standard registry."
             echo "Examples:"
