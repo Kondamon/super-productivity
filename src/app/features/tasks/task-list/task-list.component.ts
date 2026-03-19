@@ -2,10 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   forwardRef,
   inject,
   input,
   OnDestroy,
+  viewChild,
 } from '@angular/core';
 import { DropListModelSource, Task, TaskWithSubTasks } from '../task.model';
 import { TaskService } from '../task.service';
@@ -162,7 +164,13 @@ export class TaskListComponent implements OnDestroy {
   });
   allTasksLength = computed(() => this.tasks()?.length ?? 0);
 
+  readonly treeDnd = viewChild(TreeDndComponent);
+
   T: typeof T = T;
+
+  constructor() {
+    this._setupDragSyncEffect();
+  }
 
   ngOnDestroy(): void {
     this._scheduleExternalDragService.setActiveTask(null);
@@ -202,6 +210,11 @@ export class TaskListComponent implements OnDestroy {
     instruction: MoveInstruction,
     treeNodes: TreeNode<TaskWithSubTasks>[],
   ): void {
+    if (this._scheduleExternalDragService.isCancelNextDrop()) {
+      this._scheduleExternalDragService.setCancelNextDrop(false);
+      return;
+    }
+
     const dragNode = findNodeInTree(treeNodes, instruction.itemId);
     if (!dragNode?.data) return;
 
@@ -344,5 +357,30 @@ export class TaskListComponent implements OnDestroy {
         }),
       );
     }
+  }
+
+  private _setupDragSyncEffect(): void {
+    effect(() => {
+      const tree = this.treeDnd();
+      if (!tree) return;
+      const dragId = tree.draggingId();
+      if (dragId) {
+        const task = this._findTaskById(dragId);
+        if (task) {
+          this._scheduleExternalDragService.setActiveTask(task);
+        }
+      } else {
+        this._scheduleExternalDragService.setActiveTask(null);
+      }
+    });
+  }
+
+  private _findTaskById(taskId: string): TaskWithSubTasks | null {
+    for (const task of this.tasks()) {
+      if (task.id === taskId) return task;
+      const subTask = task.subTasks?.find((subT) => subT.id === taskId);
+      if (subTask) return subTask as TaskWithSubTasks;
+    }
+    return null;
   }
 }
