@@ -495,6 +495,230 @@ describe('taskSharedCrudMetaReducer', () => {
     });
   });
 
+  describe('convertToSubTask action', () => {
+    const setupConvertToSubTaskState = (
+      overrides: {
+        taskOverrides?: Partial<Task>;
+        parentOverrides?: Partial<Task>;
+        projectTaskIds?: string[];
+        tagTaskIds?: string[];
+      } = {},
+    ) => {
+      const parentTask = createMockTask({
+        id: 'parent-task',
+        tagIds: [],
+        projectId: 'project1',
+        subTaskIds: [],
+        ...overrides.parentOverrides,
+      });
+      const childTask = createMockTask({
+        id: 'task1',
+        tagIds: ['tag1'],
+        projectId: 'project1',
+        parentId: undefined,
+        ...overrides.taskOverrides,
+      });
+
+      const projectTaskIds = overrides.projectTaskIds || ['task1', 'parent-task'];
+      const tagTaskIds = overrides.tagTaskIds || ['task1'];
+
+      const testState = createStateWithExistingTasks(projectTaskIds, [], tagTaskIds, []);
+
+      // Override task entities with our custom ones
+      testState[TASK_FEATURE_NAME].entities['parent-task'] = parentTask;
+      testState[TASK_FEATURE_NAME].entities['task1'] = childTask;
+
+      // Ensure both task IDs are in the ids array
+      const idsSet = new Set(testState[TASK_FEATURE_NAME].ids as string[]);
+      if (!idsSet.has('parent-task')) {
+        (testState[TASK_FEATURE_NAME].ids as string[]).push('parent-task');
+      }
+      if (!idsSet.has('task1')) {
+        (testState[TASK_FEATURE_NAME].ids as string[]).push('task1');
+      }
+
+      return testState;
+    };
+
+    it('should remove task from project taskIds', () => {
+      const testState = setupConvertToSubTaskState();
+      const task = testState[TASK_FEATURE_NAME].entities['task1'] as Task;
+      const action = TaskSharedActions.convertToSubTask({
+        task,
+        newParentId: 'parent-task',
+        afterTaskId: null,
+      });
+
+      metaReducer(testState, action);
+      expectStateUpdate(
+        expectProjectUpdate('project1', {
+          taskIds: jasmine.arrayContaining(['parent-task']) as any,
+        }),
+        action,
+        mockReducer,
+        testState,
+      );
+
+      const updatedState = mockReducer.calls.mostRecent().args[0];
+      const projectTaskIds = updatedState[PROJECT_FEATURE_NAME].entities.project1.taskIds;
+      expect(projectTaskIds).not.toContain('task1');
+    });
+
+    it('should add task to new parent subTaskIds', () => {
+      const testState = setupConvertToSubTaskState();
+      const task = testState[TASK_FEATURE_NAME].entities['task1'] as Task;
+      const action = TaskSharedActions.convertToSubTask({
+        task,
+        newParentId: 'parent-task',
+        afterTaskId: null,
+      });
+
+      metaReducer(testState, action);
+      expectStateUpdate(
+        expectTaskUpdate('parent-task', {
+          subTaskIds: jasmine.arrayContaining(['task1']) as any,
+        }),
+        action,
+        mockReducer,
+        testState,
+      );
+    });
+
+    it('should set task parentId to new parent', () => {
+      const testState = setupConvertToSubTaskState();
+      const task = testState[TASK_FEATURE_NAME].entities['task1'] as Task;
+      const action = TaskSharedActions.convertToSubTask({
+        task,
+        newParentId: 'parent-task',
+        afterTaskId: null,
+      });
+
+      metaReducer(testState, action);
+      expectStateUpdate(
+        expectTaskUpdate('task1', { parentId: 'parent-task' }),
+        action,
+        mockReducer,
+        testState,
+      );
+    });
+
+    it('should clear task tagIds', () => {
+      const testState = setupConvertToSubTaskState();
+      const task = testState[TASK_FEATURE_NAME].entities['task1'] as Task;
+      const action = TaskSharedActions.convertToSubTask({
+        task,
+        newParentId: 'parent-task',
+        afterTaskId: null,
+      });
+
+      metaReducer(testState, action);
+      expectStateUpdate(
+        expectTaskUpdate('task1', { tagIds: [] }),
+        action,
+        mockReducer,
+        testState,
+      );
+    });
+
+    it('should sync task projectId to parent projectId', () => {
+      const testState = setupConvertToSubTaskState({
+        taskOverrides: { projectId: '' },
+        parentOverrides: { projectId: 'project1' },
+        projectTaskIds: ['parent-task'],
+        tagTaskIds: ['task1'],
+      });
+      const task = testState[TASK_FEATURE_NAME].entities['task1'] as Task;
+      const action = TaskSharedActions.convertToSubTask({
+        task,
+        newParentId: 'parent-task',
+        afterTaskId: null,
+      });
+
+      metaReducer(testState, action);
+      expectStateUpdate(
+        expectTaskUpdate('task1', { projectId: 'project1' }),
+        action,
+        mockReducer,
+        testState,
+      );
+    });
+
+    it('should remove task from tag taskIds lists', () => {
+      const testState = setupConvertToSubTaskState();
+      const task = testState[TASK_FEATURE_NAME].entities['task1'] as Task;
+      const action = TaskSharedActions.convertToSubTask({
+        task,
+        newParentId: 'parent-task',
+        afterTaskId: null,
+      });
+
+      metaReducer(testState, action);
+      const updatedState = mockReducer.calls.mostRecent().args[0];
+      const tagTaskIds = updatedState[TAG_FEATURE_NAME].entities.tag1.taskIds;
+      expect(tagTaskIds).not.toContain('task1');
+    });
+
+    it('should place task after afterTaskId in parent subTaskIds', () => {
+      const existingSub = createMockTask({
+        id: 'existing-sub',
+        parentId: 'parent-task',
+        tagIds: [],
+      });
+
+      const testState = setupConvertToSubTaskState({
+        parentOverrides: { subTaskIds: ['existing-sub'] },
+        projectTaskIds: ['task1', 'parent-task'],
+        tagTaskIds: ['task1'],
+      });
+      testState[TASK_FEATURE_NAME].entities['existing-sub'] = existingSub;
+      (testState[TASK_FEATURE_NAME].ids as string[]).push('existing-sub');
+
+      const task = testState[TASK_FEATURE_NAME].entities['task1'] as Task;
+      const action = TaskSharedActions.convertToSubTask({
+        task,
+        newParentId: 'parent-task',
+        afterTaskId: 'existing-sub',
+      });
+
+      metaReducer(testState, action);
+      const updatedState = mockReducer.calls.mostRecent().args[0];
+      const parentSubTaskIds =
+        updatedState[TASK_FEATURE_NAME].entities['parent-task'].subTaskIds;
+      const anchorIdx = parentSubTaskIds.indexOf('existing-sub');
+      const taskIdx = parentSubTaskIds.indexOf('task1');
+      expect(taskIdx).toBe(anchorIdx + 1);
+    });
+
+    it('should prepend task to subTaskIds when afterTaskId is null', () => {
+      const existingSub = createMockTask({
+        id: 'existing-sub',
+        parentId: 'parent-task',
+        tagIds: [],
+      });
+
+      const testState = setupConvertToSubTaskState({
+        parentOverrides: { subTaskIds: ['existing-sub'] },
+        projectTaskIds: ['task1', 'parent-task'],
+        tagTaskIds: ['task1'],
+      });
+      testState[TASK_FEATURE_NAME].entities['existing-sub'] = existingSub;
+      (testState[TASK_FEATURE_NAME].ids as string[]).push('existing-sub');
+
+      const task = testState[TASK_FEATURE_NAME].entities['task1'] as Task;
+      const action = TaskSharedActions.convertToSubTask({
+        task,
+        newParentId: 'parent-task',
+        afterTaskId: null,
+      });
+
+      metaReducer(testState, action);
+      const updatedState = mockReducer.calls.mostRecent().args[0];
+      const parentSubTaskIds =
+        updatedState[TASK_FEATURE_NAME].entities['parent-task'].subTaskIds;
+      expect(parentSubTaskIds[0]).toBe('task1');
+    });
+  });
+
   describe('deleteTask action', () => {
     const createDeleteAction = (taskOverrides: Partial<TaskWithSubTasks> = {}) =>
       TaskSharedActions.deleteTask({
