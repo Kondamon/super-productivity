@@ -18,33 +18,37 @@
   </div>
 }
 
-<div
-  cdkDropList
-  [cdkDropListConnectedTo]="dropListService.dropLists | async"
-  [cdkDropListSortingDisabled]="isSortingDisabled()"
-  [cdkDropListEnterPredicate]="enterPredicate"
-  [cdkDropListData]="dropModelDataForList()"
-  (cdkDropListDropped)="drop(filteredTasks(), $event)"
-  [@taskList]="
-    (dropListService.isBlockAniAfterDrop$ | async) ? 'BLOCK' : filteredTasks()?.length
-  "
-  [attr.data-id]="listModelId()"
+<tree-dnd
+  [nodes]="treeNodes()"
+  [canDrop]="canDropTask"
+  [useExternalDropListGroup]="true"
+  [dropListRegistration]="dropListRegistrationConfig"
+  (moved)="onTreeMoved($event, treeNodes())"
   class="task-list-inner"
+  [attr.data-id]="listModelId()"
 >
-  @for (task of filteredTasks(); track trackByFn($index, task); let i = $index) {
+  <ng-template
+    #treeFolder
+    let-node
+  >
     <task
-      [isInSubTaskList]="isSubTaskList()"
+      [task]="node.data"
+      [isInSubTaskList]="false"
       [isBacklog]="isBacklog()"
-      [task]="task"
-      cdkDrag
-      [cdkDragDisabled]="listModelId() === 'LATER_TODAY'"
-      [cdkDragData]="task"
-      (cdkDragStarted)="onDragStarted(task, $event)"
-      (cdkDragEnded)="onDragEnded()"
-    >
-    </task>
-  }
-</div>
+    ></task>
+  </ng-template>
+
+  <ng-template
+    #treeItem
+    let-node
+  >
+    <task
+      [task]="node.data"
+      [isInSubTaskList]="!!node.data?.parentId"
+      [isBacklog]="isBacklog()"
+    ></task>
+  </ng-template>
+</tree-dnd>
 
 @if (noTasksMsg() && !allTasksLength()) {
   <div class="no-tasks">{{ noTasksMsg() }}</div>
