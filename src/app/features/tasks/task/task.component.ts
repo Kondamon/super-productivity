@@ -6,7 +6,6 @@ import {
   DestroyRef,
   effect,
   ElementRef,
-  forwardRef,
   HostListener,
   inject,
   input,
@@ -25,10 +24,7 @@ import {
 } from '../task.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTimeEstimateComponent } from '../dialog-time-estimate/dialog-time-estimate.component';
-import {
-  expandAnimation,
-  expandInOnlyAnimation,
-} from '../../../ui/animations/expand.ani';
+import { expandAnimation } from '../../../ui/animations/expand.ani';
 import { GlobalConfigService } from '../../config/global-config.service';
 import { concatMap, first, tap } from 'rxjs/operators';
 import { fadeAnimation } from '../../../ui/animations/fade.ani';
@@ -67,7 +63,6 @@ import { LongPressIOSDirective } from '../../../ui/longpress/longpress-ios.direc
 import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
 import { TaskHoverControlsComponent } from './task-hover-controls/task-hover-controls.component';
 import { ProgressBarComponent } from '../../../ui/progress-bar/progress-bar.component';
-import { TaskListComponent } from '../task-list/task-list.component';
 import { MsToStringPipe } from '../../../ui/duration/ms-to-string.pipe';
 import { ShortPlannedAtPipe } from '../../../ui/pipes/short-planned-at.pipe';
 import { LocalDateStrPipe } from '../../../ui/pipes/local-date-str.pipe';
@@ -91,7 +86,7 @@ import { TaskFocusService } from '../task-focus.service';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [expandAnimation, fadeAnimation, swirlAnimation, expandInOnlyAnimation],
+  animations: [expandAnimation, fadeAnimation, swirlAnimation],
   /* eslint-disable @typescript-eslint/naming-convention*/
   host: {
     '[id]': 'taskIdWithPrefix()',
@@ -110,7 +105,7 @@ import { TaskFocusService } from '../task-focus.service';
     TaskHoverControlsComponent,
     ProgressBarComponent,
     MatMiniFabButton,
-    forwardRef(() => TaskListComponent),
+
     TaskContextMenuComponent,
     MatMenu,
     MatMenuContent,

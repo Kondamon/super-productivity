@@ -312,16 +312,6 @@
           </mat-icon>
         }
       </button>
-      <task-list
-        [@expandInOnly]
-        [isHideAll]="!!t._hideSubTasksMode"
-        [isHideDone]="t._hideSubTasksMode === ShowSubTasksMode.HideDone"
-        [isSubTaskList]="true"
-        [listModelId]="t.id"
-        [parentId]="t.id"
-        [tasks]="t.subTasks"
-        listId="SUB"
-      ></task-list>
     </div>
   }
   @if (isDragOver) {
