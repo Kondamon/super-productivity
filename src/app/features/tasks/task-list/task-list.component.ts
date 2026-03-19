@@ -244,6 +244,9 @@ export class TaskListComponent implements OnDestroy {
 
     if (targetParentId) {
       this._dispatchMoveSubTask(dragTask, targetParentId, afterTaskId);
+      if (instruction.where === 'inside') {
+        this._autoExpandParent(targetParentId, treeNodes);
+      }
     } else {
       this._promoteToMainTask(dragTask, instruction, treeNodes, siblingIds);
     }
@@ -263,6 +266,7 @@ export class TaskListComponent implements OnDestroy {
         instruction.targetId as string,
         afterTaskId,
       );
+      this._autoExpandParent(instruction.targetId as string, treeNodes);
     } else {
       const targetParent = findParentNode(treeNodes, instruction.targetId as string);
       if (targetParent) {
@@ -334,6 +338,16 @@ export class TaskListComponent implements OnDestroy {
         afterTaskId,
       }),
     );
+  }
+
+  private _autoExpandParent(
+    parentId: string,
+    treeNodes: TreeNode<TaskWithSubTasks>[],
+  ): void {
+    const parentNode = findNodeInTree(treeNodes, parentId);
+    if (parentNode?.data?._hideSubTasksMode) {
+      this._taskService.showSubTasks(parentId);
+    }
   }
 
   private _dispatchRootReorder(taskId: string, afterTaskId: string | null): void {
