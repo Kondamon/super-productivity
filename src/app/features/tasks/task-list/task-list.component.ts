@@ -31,6 +31,7 @@ import { WorkContextService } from '../../work-context/work-context.service';
 import { Store } from '@ngrx/store';
 import { moveItemBeforeItem } from '../../../util/move-item-before-item';
 import { DropListService } from '../../../core-ui/drop-list/drop-list.service';
+import { CanDropPredicate } from '../../../ui/tree-dnd/tree.types';
 import { IssueService } from '../../issue/issue.service';
 import { SearchResultItem } from '../../issue/issue.model';
 import { MatButton } from '@angular/material/button';
@@ -88,6 +89,22 @@ export class TaskListComponent implements OnDestroy, AfterViewInit {
   noTasksMsg = input<string | undefined>(undefined);
   isBacklog = input(false);
   isSubTaskList = input(false);
+
+  readonly canDropTask: CanDropPredicate<TaskWithSubTasks> = ({ drag, drop, where }) => {
+    if (where !== 'inside') return true;
+    if (!drop) return true;
+
+    const dragTask = drag.data;
+
+    // Rule 1: Parent with subtasks cannot be nested inside another task
+    if (dragTask && dragTask.subTasks?.length) return false;
+
+    // Rule 2: Cannot drop inside a subtask (would create sub-sub-tasks)
+    // Subtasks are leaf nodes with no children array
+    if (drop.children === undefined) return false;
+
+    return true;
+  };
 
   currentTaskId = toSignal(this._taskService.currentTaskId$);
   dropModelDataForList = computed<DropModelDataForList>(() => {
