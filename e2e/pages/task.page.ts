@@ -14,9 +14,6 @@ export class TaskPage extends BasePage {
    * Get a task by index (1-based)
    */
   getTask(index: number = 1): Locator {
-    if (index === 1) {
-      return this.page.locator(FIRST_TASK);
-    }
     return this.page.locator(TASK).nth(index - 1);
   }
 

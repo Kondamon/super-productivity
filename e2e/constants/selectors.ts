@@ -36,8 +36,8 @@ export const cssSelectors = {
   // TASK SELECTORS
   // ============================================================================
   TASK: 'task',
-  FIRST_TASK: 'task:first-child',
-  SECOND_TASK: 'task:nth-child(2)',
+  FIRST_TASK: '.item:first-child > task',
+  SECOND_TASK: '.item:nth-child(2) > task',
   TASK_TITLE: 'task task-title',
   TASK_DONE_BTN: '.task-done-btn',
   TASK_LIST: 'task-list',

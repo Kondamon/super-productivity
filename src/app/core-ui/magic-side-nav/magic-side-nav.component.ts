@@ -619,9 +619,15 @@ export class MagicSideNavComponent implements OnInit, OnDestroy, AfterViewInit {
       // to a different project, otherwise the drag action might throw an error,
       // if the dom element is removed before the return animation has finished
       const dragref = this._externalDragService.activeDragRef();
-      dragref?.ended.pipe(take(1)).subscribe(() => {
+      const executeMove = (): void => {
         this._taskService.moveToProject(draggedTask, projectId!);
-      });
+      };
+      if (dragref) {
+        dragref.ended.pipe(take(1)).subscribe(executeMove);
+      } else {
+        // tree-dnd does not expose DragRef; defer to let CDK finish
+        setTimeout(executeMove, 0);
+      }
     } else if (navItemElement.hasAttribute('data-tag-id')) {
       // Task is dropped on a tag
       const tagId = navItemElement.getAttribute('data-tag-id');

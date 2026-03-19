@@ -111,7 +111,7 @@
     }
   </div>
 
-  @if (folder && node.expanded) {
+  @if (folder && node.expanded && node.children?.length) {
     @let childLevel = level + 1;
     <div
       class="folder-content"
