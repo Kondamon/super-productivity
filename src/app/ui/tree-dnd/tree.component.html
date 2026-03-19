@@ -1,16 +1,33 @@
-<div
-  class="tree"
-  role="tree"
-  aria-label="Tree"
-  [class.is-dragging]="draggingId()"
-  [class.is-drag-invalid]="isDragInvalid()"
-  cdkDropListGroup
->
+@if (useExternalDropListGroup()) {
+  <div
+    class="tree"
+    role="tree"
+    aria-label="Tree"
+    [class.is-dragging]="draggingId()"
+    [class.is-drag-invalid]="isDragInvalid()"
+  >
+    <ng-container *ngTemplateOutlet="treeContent"></ng-container>
+  </div>
+} @else {
+  <div
+    class="tree"
+    role="tree"
+    aria-label="Tree"
+    [class.is-dragging]="draggingId()"
+    [class.is-drag-invalid]="isDragInvalid()"
+    cdkDropListGroup
+  >
+    <ng-container *ngTemplateOutlet="treeContent"></ng-container>
+  </div>
+}
+
+<ng-template #treeContent>
   <div
     class="list list--root"
     cdkDropList
     [cdkDropListData]="{ parentId: 'root', items: nodes() }"
     [cdkDropListEnterPredicate]="canEnterList"
+    [cdkDropListConnectedTo]="externalConnectedLists()"
     (cdkDropListDropped)="onDrop($event)"
   >
     @for (node of nodes(); track node.id) {
@@ -34,7 +51,7 @@
       <span class="indicator-line"></span>
     </div>
   }
-</div>
+</ng-template>
 
 <ng-template
   #nodeTpl
@@ -51,6 +68,7 @@
     class="item"
     cdkDrag
     [cdkDragData]="node.id"
+    [cdkDragDisabled]="dragDisabled()"
     [cdkDragStartDelay]="IS_TOUCH_PRIMARY ? DRAG_DELAY_FOR_TOUCH : 0"
     [ngClass]="{
       'is-folder': folder,
@@ -101,6 +119,7 @@
       [@expandCollapse]
       [cdkDropListData]="{ parentId: node.id, items: node.children ?? [] }"
       [cdkDropListEnterPredicate]="canEnterList"
+      [cdkDropListConnectedTo]="externalConnectedLists()"
       (cdkDropListDropped)="onDrop($event)"
     >
       @for (child of node.children ?? []; track child.id) {

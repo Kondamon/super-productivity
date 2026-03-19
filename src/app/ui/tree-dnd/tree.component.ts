@@ -3,6 +3,7 @@ import {
   Component,
   contentChild,
   DestroyRef,
+  effect,
   ElementRef,
   inject,
   input,
@@ -10,8 +11,10 @@ import {
   output,
   signal,
   TemplateRef,
+  viewChildren,
 } from '@angular/core';
 import { NgClass, NgStyle, NgTemplateOutlet } from '@angular/common';
+import { Observable, Subscription } from 'rxjs';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -62,6 +65,13 @@ export class TreeDndComponent<TData = unknown> {
   readonly nodes = model.required<readonly TreeNode<TData>[]>();
   readonly indent = input(TREE_CONSTANTS.DEFAULT_INDENT);
   readonly canDrop = input<CanDropPredicate<TData>>(() => true);
+  readonly useExternalDropListGroup = input(false);
+  readonly dropListRegistration = input<{
+    register: (dropList: CdkDropList, isSubList: boolean) => void;
+    unregister: (dropList: CdkDropList) => void;
+    connectedTo: Observable<CdkDropList[]>;
+  } | null>(null);
+  readonly dragDisabled = input(false);
   readonly moved = output<MoveInstruction>();
 
   // === PUBLIC CONTENT CHILDREN ===
@@ -74,8 +84,12 @@ export class TreeDndComponent<TData = unknown> {
   readonly isDragInvalid = signal<boolean>(false);
   readonly isRootOver = signal<boolean>(false);
   readonly indicatorStyle = this._indicatorService.indicatorStyle;
+  readonly externalConnectedLists = signal<CdkDropList[]>([]);
   protected readonly DRAG_DELAY_FOR_TOUCH = DRAG_DELAY_FOR_TOUCH;
   protected readonly IS_TOUCH_PRIMARY = IS_TOUCH_PRIMARY;
+
+  // === PRIVATE QUERIES ===
+  private readonly _dropLists = viewChildren(CdkDropList);
 
   // === PRIVATE STATE ===
   /**
@@ -93,9 +107,13 @@ export class TreeDndComponent<TData = unknown> {
   private _dropFlashTimer?: number;
 
   constructor() {
+    this._setupExternalConnectedListsEffect();
+    this._setupDropListRegistrationEffect();
+
     this._destroyRef.onDestroy(() => {
       if (this._dropFlashTimer) clearTimeout(this._dropFlashTimer);
       this._indicatorService.clear();
+      this._unregisterAllDropLists();
     });
   }
 
@@ -209,6 +227,42 @@ export class TreeDndComponent<TData = unknown> {
   }
 
   // === PRIVATE METHODS ===
+  private _setupExternalConnectedListsEffect(): void {
+    effect((onCleanup) => {
+      const registration = this.dropListRegistration();
+      const useExternal = this.useExternalDropListGroup();
+      if (!useExternal || !registration) {
+        this.externalConnectedLists.set([]);
+        return;
+      }
+      const subscription: Subscription = registration.connectedTo.subscribe((lists) => {
+        this.externalConnectedLists.set(lists);
+      });
+      onCleanup(() => subscription.unsubscribe());
+    });
+  }
+
+  private _setupDropListRegistrationEffect(): void {
+    effect(() => {
+      const registration = this.dropListRegistration();
+      const lists = this._dropLists();
+      const useExternal = this.useExternalDropListGroup();
+      if (!useExternal || !registration) return;
+      for (const list of lists) {
+        const isSubList = !!list.data?.parentId && list.data.parentId !== 'root';
+        registration.register(list, isSubList);
+      }
+    });
+  }
+
+  private _unregisterAllDropLists(): void {
+    const registration = this.dropListRegistration();
+    if (!registration) return;
+    for (const list of this._dropLists()) {
+      registration.unregister(list);
+    }
+  }
+
   private _canEnterListPredicate(
     drag: CdkDrag<TreeId>,
     drop: CdkDropList<DropListContext<TData>>,
