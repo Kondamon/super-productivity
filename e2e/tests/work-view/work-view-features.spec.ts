@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures/test.fixture';
 
 const TASK = 'task';
 const TASK_TITLE = 'task task-title';
-const FIRST_TASK = 'task:first-of-type';
+const FIRST_TASK = '.item:first-child > task';
 const UNDONE_TASK_LIST = 'task-list[listmodelid="UNDONE"]';
 const DONE_TASK_LIST = 'task-list[listmodelid="DONE"]';
 const DONE_TASKS_SECTION = '.tour-doneList';
@@ -92,16 +92,16 @@ test.describe('Work View Features', () => {
     await expect(page.locator(TASK)).toHaveCount(4, { timeout: 5000 });
 
     // Verify order (newest first)
-    await expect(page.locator('task:nth-of-type(1) task-title')).toContainText(
+    await expect(page.locator('task').nth(0).locator('task-title')).toContainText(
       /Fourth created/,
     );
-    await expect(page.locator('task:nth-of-type(2) task-title')).toContainText(
+    await expect(page.locator('task').nth(1).locator('task-title')).toContainText(
       /Third created/,
     );
-    await expect(page.locator('task:nth-of-type(3) task-title')).toContainText(
+    await expect(page.locator('task').nth(2).locator('task-title')).toContainText(
       /Second created/,
     );
-    await expect(page.locator('task:nth-of-type(4) task-title')).toContainText(
+    await expect(page.locator('task').nth(3).locator('task-title')).toContainText(
       /First created/,
     );
   });

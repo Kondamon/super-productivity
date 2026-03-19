@@ -9,8 +9,9 @@ test.describe('Simple Subtask', () => {
 
     await workViewPage.addSubTask(task, 'SubTask 1');
 
-    const subTask = task.locator('.sub-tasks task');
-    await subTask.waitFor({ state: 'visible' });
+    // With tree-dnd, subtasks render in .folder-content as sibling items
+    const subTask = page.locator('.folder-content task');
+    await subTask.waitFor({ state: 'visible', timeout: 15000 });
 
     // Verify subtask was created with correct content
     const subtaskTitle = subTask.locator('task-title');
